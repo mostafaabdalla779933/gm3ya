@@ -1,8 +1,31 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        coroutines_version = "1.5.2"
+        kotlin_version = '1.6.10'
+        ktor_version = '1.5.1'
+    }
+
+    ext.signing = [
+            "storePassword"    : "gm3ya",
+            "keyAlias"         : "gm3ya",
+            "keyPassword"      : "gm3ya",
+    ]
+    dependencies {
+
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.1"
+        classpath 'com.google.gms:google-services:4.3.13'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.1'
+    }
+}
+
+
 plugins {
     id 'com.android.application' version '7.2.1' apply false
     id 'com.android.library' version '7.2.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
+    id 'com.google.dagger.hilt.android' version '2.42' apply false
 }
 
 task clean(type: Delete) {
