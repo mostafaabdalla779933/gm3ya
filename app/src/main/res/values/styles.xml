@@ -15,7 +15,6 @@
         <item name="android:textSize">17sp</item>
         <item name="android:maxLines">1</item>
         <item name="android:background">@drawable/bg_edit_text</item>
-
     </style>
 
     <style name="EditText.edit.field.white" parent="Theme.AppCompat.NoActionBar">
@@ -32,6 +31,12 @@
     <style name="myMaterialButton003233" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="backgroundTint">#003233</item>
     </style>
+
+
+    <style name="myMaterialButton35BCCB" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">#35BCCB</item>
+    </style>
+
 
     <style name="myMaterialButtonwhite" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="backgroundTint">#FFFFFF</item>
