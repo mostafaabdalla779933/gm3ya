@@ -28,36 +28,7 @@ data class UserModel(
     val flat:String?=""
 ) : Parcelable {
 
- //   fun getAddress()= "${governorate ?: ""} ${city?: ""} ${block?: ""} ${street?: ""} ${building?: ""} ${avenues?: ""} ${floor?: ""} ${flat?: ""}"
 
-    fun getAddress():String{
-        val str:StringBuilder = StringBuilder()
-        if(governorate.isNullOrEmpty().not())
-            str.append( "Governorate : $governorate \n")
-
-        if(city.isNullOrEmpty().not())
-            str.append( "City : $city \n")
-
-        if(block.isNullOrEmpty().not())
-            str.append( "Block : $block \n")
-
-        if(street.isNullOrEmpty().not())
-            str.append( "Street : $street \n")
-
-        if(building.isNullOrEmpty().not())
-            str.append( "Building : $building \n")
-
-        if(avenues.isNullOrEmpty().not())
-            str.append( "Avenues : $avenues \n")
-
-        if(floor.isNullOrEmpty().not())
-            str.append( "Floor : $floor \n")
-
-        if(flat.isNullOrEmpty().not())
-            str.append( "Flat : $flat \n")
-
-        return str.toString().trim()
-    }
 
 
     companion object{
