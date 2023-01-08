@@ -8,6 +8,7 @@ import com.buildingmaterials.buildingmaterials.common.isStringEmpty
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
+import com.gm3ya.gm3ya.common.firebase.data.UserModel
 import com.gm3ya.gm3ya.databinding.FragmentSignupBinding
 
 
@@ -36,7 +37,7 @@ class SignupFragment  : BaseFragment<FragmentSignupBinding, AnyViewModel>() {
                     showErrorMsg("fill UserName")
                 }
                 etEmail.isStringEmpty() -> {
-                    showErrorMsg("fill mail")
+                    showErrorMsg("fill email")
                 }
                 etPass.isStringEmpty() -> {
                     showErrorMsg("fill password")
@@ -57,14 +58,36 @@ class SignupFragment  : BaseFragment<FragmentSignupBinding, AnyViewModel>() {
             binding.etEmail.getString(),
             binding.etPass.getString()
         ).addOnCompleteListener { task ->
-            hideLoading()
             if (task.isSuccessful) {
-                showSuccessMsg("success")
-                FirebaseHelp.logout()
-                findNavController().popBackStack()
+                addUser(task.result.user?.uid ?: "")
             } else {
+                hideLoading()
                 showErrorMsg(task.exception?.localizedMessage ?: "something wrong")
             }
+        }
+    }
+
+    private fun addUser(id: String) {
+        binding.apply {
+            val user = UserModel(
+                userName = etUserName.getString(),
+                email = etEmail.getString(),
+                userId = id,
+                password = etPass.getString()
+            )
+            FirebaseHelp.addObject<UserModel>(
+                user,
+                FirebaseHelp.USERS,
+                id, {
+                    hideLoading()
+                    showSuccessMsg("success")
+                    FirebaseHelp.logout()
+                    findNavController().popBackStack()
+
+                }, { str ->
+                    showErrorMsg(str)
+                }
+            )
         }
     }
 

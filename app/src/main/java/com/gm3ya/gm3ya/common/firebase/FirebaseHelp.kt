@@ -264,6 +264,24 @@ object FirebaseHelp {
     }
 
 
+    inline fun <reified T> addObject(
+        objectToSet:Any,
+        collection: String,
+        document: String,
+        crossinline onSuccess: () -> Unit,
+        crossinline onFailure: (String) -> Unit
+    ) {
+        fireStore.collection(collection)
+            .document(document).set(objectToSet, SetOptions.merge())
+            .addOnSuccessListener {
+                onSuccess()
+            }.addOnFailureListener { e ->
+                onFailure(e.localizedMessage ?: "something wrong")
+            }
+
+    }
+
+
     inline fun <reified T> getObject(
         collection: String,
         document: String,

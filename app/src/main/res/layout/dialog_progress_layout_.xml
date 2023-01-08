@@ -16,8 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:progressTint="@color/brown_CB7345"
-            android:indeterminateTint="@color/brown_CB7345"
+            android:progressTint="#35BCCB"
+            android:indeterminateTint="#35BCCB"
             android:background="@color/white"/>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

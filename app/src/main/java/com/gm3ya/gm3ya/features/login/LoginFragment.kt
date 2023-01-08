@@ -47,6 +47,8 @@ class LoginFragment  : BaseFragment<FragmentLoginBinding, AnyViewModel>() {
             .signInWithEmailAndPassword(binding.etEmail.getString(), binding.etPass.getString())
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
+                    hideLoading()
+                    FirebaseHelp.logout()
                     checkUser()
                 } else {
                     hideLoading()
