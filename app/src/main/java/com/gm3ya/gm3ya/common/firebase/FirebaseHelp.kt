@@ -260,9 +260,41 @@ object FirebaseHelp {
 
 
     fun logout(){
-        CartsHolder.cartsList.clear()
         auth.signOut()
     }
 
 
+    inline fun <reified T> getObject(
+        collection: String,
+        document: String,
+        crossinline onSuccess: (T) -> Unit,
+        crossinline onFailure: (String) -> Unit
+    ) {
+        fireStore.collection(collection).document(document).get().addOnSuccessListener { document ->
+            document.toObject(T::class.java)?.let {
+                onSuccess(it)
+            } ?: kotlin.run {
+                onFailure("something wrong")
+            }
+        }.addOnFailureListener { e ->
+            onFailure(e.localizedMessage ?: "something wrong")
+        }
+    }
+
+
+    inline fun <reified T> getAllObjects(
+        collection: String,
+        crossinline onSuccess: (MutableList<T>) -> Unit,
+        crossinline onFailure: (String) -> Unit
+    ) {
+        fireStore.collection(collection).get().addOnSuccessListener { documents ->
+            val list = mutableListOf<T>()
+            documents.forEach { document ->
+                list.add(document.toObject(T::class.java))
+            }
+            onSuccess(list)
+        }.addOnFailureListener { e ->
+            onFailure(e.localizedMessage ?: "something wrong")
+        }
+    }
 }

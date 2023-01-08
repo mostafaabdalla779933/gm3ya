@@ -7,9 +7,9 @@ buildscript {
     }
 
     ext.signing = [
-            "storePassword"    : "gm3ya",
-            "keyAlias"         : "gm3ya",
-            "keyPassword"      : "gm3ya",
+            "storePassword"    : "gm3ya123",
+            "keyAlias"         : "gm3ya123",
+            "keyPassword"      : "gm3ya123",
     ]
     dependencies {
 

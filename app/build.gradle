@@ -7,6 +7,15 @@ plugins {
 }
 
 android {
+
+    signingConfigs {
+        release {
+            storeFile file("/gm3ya123.jks")
+            storePassword signing.storePassword
+            keyAlias signing.keyAlias
+            keyPassword signing.keyPassword
+        }
+    }
     compileSdk 32
 
     defaultConfig {
@@ -21,6 +30,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
