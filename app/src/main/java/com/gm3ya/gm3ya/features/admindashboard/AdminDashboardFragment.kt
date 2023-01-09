@@ -2,6 +2,7 @@ package com.gm3ya.gm3ya.features.admindashboard
 
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
@@ -17,9 +18,20 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
     }
 
     override fun onFragmentCreated() {
+        setNavigationButtons()
         showLoading()
         getAllAccounts()
         hideLoading()
+    }
+
+    private fun setNavigationButtons() {
+        binding.accountsCard.setOnClickListener {
+            findNavController().navigate(AdminDashboardFragmentDirections.actionAdminDashboardFragmentToAllAccountsFragment())
+        }
+
+        binding.associationsCard.setOnClickListener {
+            findNavController().navigate(AdminDashboardFragmentDirections.actionAdminDashboardFragmentToAllAssociationsFragment())
+        }
     }
 
     private fun getAllAccounts() {

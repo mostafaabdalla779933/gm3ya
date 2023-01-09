@@ -316,15 +316,4 @@ object FirebaseHelp {
         }
     }
 
-//    inline fun <reified T> getAccountsNumber(
-//        collection: String,
-//        crossinline onSuccess: (Int) -> Unit,
-//        crossinline onFailure: (String) -> Unit
-//    ) {
-//        fireStore.collection(collection).whereEqualTo("isAdmin", false).count().get(AggregateSource.SERVER).addOnSuccessListener { document ->
-//            onSuccess(document.result)
-//        }.addOnFailureListener { e ->
-//            onFailure(e.localizedMessage ?: "something wrong")
-//        }
-//    }
 }
