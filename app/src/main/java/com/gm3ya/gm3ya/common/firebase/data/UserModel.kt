@@ -10,6 +10,7 @@ data class UserModel(
     val userName:String? = "",
     val password:String? ="",
     var userId :String? ="",
+    var isAdmin:Boolean?=false
 ) : Parcelable
 
 enum class UserState(val value:String){

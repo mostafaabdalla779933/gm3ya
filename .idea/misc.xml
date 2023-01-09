@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/gm3ya/app/src/main/res/drawable/all_accounts_item_card_background.xml" value="0.1775" />
+        <entry key="..\:/gm3ya/app/src/main/res/drawable/all_associations_item_tv_state_available_background.xml" value="0.1775" />
         <entry key="..\:/gm3ya/app/src/main/res/drawable/bg_edit_text.xml" value="0.18" />
         <entry key="..\:/gm3ya/app/src/main/res/drawable/bg_rounded.xml" value="0.205" />
         <entry key="..\:/gm3ya/app/src/main/res/drawable/ic_add.xml" value="0.205" />
         <entry key="..\:/gm3ya/app/src/main/res/drawable/ic_arrow_right.xml" value="0.205" />
         <entry key="..\:/gm3ya/app/src/main/res/layout/activity_main.xml" value="0.1381340579710145" />
         <entry key="..\:/gm3ya/app/src/main/res/layout/dialog_progress_layout_.xml" value="0.1381340579710145" />
-        <entry key="..\:/gm3ya/app/src/main/res/layout/fragment_client_dashboard.xml" value="0.2" />
+        <entry key="..\:/gm3ya/app/src/main/res/layout/fragment_admin_dashboard.xml" value="0.264" />
+        <entry key="..\:/gm3ya/app/src/main/res/layout/fragment_client_dashboard.xml" value="0.4" />
         <entry key="..\:/gm3ya/app/src/main/res/layout/fragment_login.xml" value="0.152" />
         <entry key="..\:/gm3ya/app/src/main/res/layout/fragment_signup.xml" value="0.264" />
         <entry key="..\:/gm3ya/app/src/main/res/layout/fragment_splash.xml" value="0.264" />
