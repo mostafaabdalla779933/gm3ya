@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
+import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
 import com.gm3ya.gm3ya.common.firebase.data.UserModel
 import com.gm3ya.gm3ya.databinding.FragmentAdminDashboardBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -21,6 +22,11 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
     }
 
     private fun getAllAccounts() {
+        FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS,{
+
+        },{
+            
+        })
         FirebaseFirestore.getInstance().collection("all_users").get()
             .addOnCompleteListener { task ->
 
