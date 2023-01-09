@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.allaccounts.AllAccountsFragment">
+    tools:context=".features.allassociations.AllAssociationsFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_all_associations_fragment"
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:paddingStart="-35dp"
             android:paddingEnd="0dp"
-            android:text="All accounts"
+            android:text="All associations"
             android:textColor="#000000"
             android:textSize="16sp" />
 
@@ -57,10 +57,10 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar_all_associations_fragment" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_usernames"
+        android:id="@+id/rv_associations"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
