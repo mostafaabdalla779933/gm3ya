@@ -5,64 +5,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".features.admindashboard.AdminDashboardFragment">
 
-   <com.google.android.material.appbar.MaterialToolbar
-       android:id="@+id/toolbar"
+   <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       app:navigationIcon="@drawable/arrow_back"
-       app:title="hamada"
-       app:titleCentered="true"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent" />
+       android:padding="16dp">
 
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_notification"
+          android:id="@+id/ivNotification"
+          android:background="@drawable/bg_rounded"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:padding="9dp"/>
 
+      <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_add"
+          android:id="@+id/ivAdd"
+          android:background="@drawable/bg_rounded"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          android:padding="9dp"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="SAVINGS ASSOCIATION"
+          android:textColor="#50003233"
+          android:textStyle="bold"
+          app:layout_constraintTop_toBottomOf="@id/ivAdd"
+          android:textAlignment="center"
+          android:id="@+id/tv"
+          android:gravity="center"
+          android:layout_marginTop="10dp"/>
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
       <androidx.appcompat.widget.LinearLayoutCompat
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:weightSum="2"
+          android:layout_marginTop="35dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginEnd="16dp"
+          android:orientation="vertical"
           android:background="@drawable/admin_dashboard_card_background">
 
          <TextView
              android:id="@+id/tv_accounts_number"
-             android:layout_width="0dp"
+             android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginStart="16dp"
              android:layout_marginTop="9dp"
-             android:layout_weight="1"
-             android:text="mina                                mina"
+             android:text="53"
              android:textColor="@color/white"
-             android:textSize="25sp"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toTopOf="parent" />
+             android:textSize="25sp" />
 
          <TextView
              android:id="@+id/tv_all_accounts"
-             android:layout_width="0dp"
-             android:layout_weight="1"
+             android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_marginTop="8dp"
+             android:layout_marginStart="16dp"
              android:layout_marginBottom="12dp"
              android:textColor="@color/white"
              android:text="All accounts"
-             android:textSize="20sp"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintStart_toStartOf="@+id/tv_accounts_number"
-             app:layout_constraintTop_toBottomOf="@+id/tv_accounts_number" />
+             android:textSize="20sp" />
       </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
 
       <androidx.appcompat.widget.LinearLayoutCompat
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="vertical"
+          android:layout_marginTop="15dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginEnd="16dp"
           android:background="@drawable/admin_dashboard_card_background">
 
          <TextView
@@ -73,9 +95,7 @@
              android:layout_marginTop="9dp"
              android:textColor="@color/white"
              android:text="7"
-             android:textSize="25sp"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toTopOf="parent" />
+             android:textSize="25sp" />
 
          <TextView
              android:id="@+id/tv_all_associations"
@@ -86,10 +106,7 @@
              android:textColor="@color/white"
              android:text="All associations"
              android:textSize="20sp"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintStart_toStartOf="@+id/tv_associations_number"
-             app:layout_constraintTop_toBottomOf="@+id/tv_associations_number" />
+             android:layout_marginStart="16dp" />
+
       </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 </androidx.appcompat.widget.LinearLayoutCompat>

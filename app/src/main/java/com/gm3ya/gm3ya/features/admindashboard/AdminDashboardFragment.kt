@@ -19,34 +19,26 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
     override fun onFragmentCreated() {
         showLoading()
         getAllAccounts()
+        hideLoading()
     }
 
     private fun getAllAccounts() {
         FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS,{
-
+            binding.tvAllAccounts.text = it.count().toString()
+            getAllAssociations()
         },{
-            
+            hideLoading()
+            showErrorMsg(it)
         })
-        FirebaseFirestore.getInstance().collection("all_users").get()
-            .addOnCompleteListener { task ->
+    }
 
-                Log.e(this.javaClass.simpleName, task.result.documents.toString())
-                hideLoading()
-
-                if (task.isSuccessful) {
-                    val usersList: ArrayList<UserModel> = ArrayList()
-                    for (i in task.result.documents) {
-                        val user = i.toObject(UserModel::class.java)
-                        //                    if(user.isAdmin) {
-                        //                        continue
-                        //                    }
-                        user?.let {
-                            usersList.add(it)
-                        }
-                    }
-                } else {
-                    showErrorMsg(task.exception?.localizedMessage ?:  "something wrong")
-                }
-            }
+    private fun getAllAssociations() {
+        // Associations instead users
+        FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS,{
+            binding.tvAllAccounts.text = it.count().toString()
+        },{
+            hideLoading()
+            showErrorMsg(it)
+        })
     }
 }
