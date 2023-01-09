@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/all_associations_item_cardview_background"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="16dp">
+
+    <TextView
+        android:id="@+id/tv_association_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
+        android:text="Associations Name"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_navigate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_members_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_association_name"
+        app:srcCompat="@drawable/arrow_associations_item" />
+
+    <TextView
+        android:id="@+id/tv_members_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="9dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="5dp"
+        android:padding="5dp"
+        android:background="@drawable/all_associations_item_tv_background"
+        android:text="6/10 Members"
+        android:textSize="12sp"
+        android:textColor="#A2A2A2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_association_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_association_name" />
+
+    <TextView
+        android:id="@+id/tv_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:padding="5dp"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
+        android:background="@drawable/all_associations_item_tv_background"
+        android:text="1000$"
+        android:textSize="12sp"
+        android:textColor="#A2A2A2"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_members_number"
+        app:layout_constraintStart_toEndOf="@+id/tv_members_number"
+        app:layout_constraintTop_toTopOf="@+id/tv_members_number" />
+
+    <TextView
+        android:id="@+id/tv_association_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:padding="5dp"
+        android:background="@drawable/all_associations_item_tv_state_available_background"
+        android:text="Available"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_total_amount"
+        app:layout_constraintStart_toEndOf="@+id/tv_total_amount"
+        app:layout_constraintTop_toTopOf="@+id/tv_total_amount" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
