@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">gm3ya</string>
+    <string name="all_associations">All associations</string>
+    <string name="my_associations">My associations</string>
 </resources>
