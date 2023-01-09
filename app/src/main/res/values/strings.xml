@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">gm3ya</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_associations">All associations</string>
+    <string name="my_associations">My associations</string>
 </resources>

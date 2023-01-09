@@ -32,9 +32,33 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             />
+        <action
+            android:id="@+id/action_loginFragment_to_clientDashboardFragment"
+            app:destination="@id/clientDashboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_loginFragment_to_adminDashboardFragment"
+            app:destination="@id/adminDashboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.gm3ya.gm3ya.features.signup.SignupFragment"
         android:label="SignupFragment" />
+    <fragment
+        android:id="@+id/clientDashboardFragment"
+        android:name="com.gm3ya.gm3ya.features.clientdashboard.ClientDashboardFragment"
+        android:label="fragment_client_dashboard"
+        tools:layout="@layout/fragment_client_dashboard" />
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.gm3ya.gm3ya.features.admindashboard.AdminDashboardFragment"
+        android:label="fragment_admin_dashboard"
+        tools:layout="@layout/fragment_admin_dashboard" />
 </navigation>

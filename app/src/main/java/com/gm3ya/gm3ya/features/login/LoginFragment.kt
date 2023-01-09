@@ -8,6 +8,7 @@ import com.buildingmaterials.buildingmaterials.common.isStringEmpty
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
+import com.gm3ya.gm3ya.common.firebase.data.UserModel
 import com.gm3ya.gm3ya.databinding.FragmentLoginBinding
 
 
@@ -48,7 +49,6 @@ class LoginFragment  : BaseFragment<FragmentLoginBinding, AnyViewModel>() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     hideLoading()
-                    FirebaseHelp.logout()
                     checkUser()
                 } else {
                     hideLoading()
@@ -59,7 +59,15 @@ class LoginFragment  : BaseFragment<FragmentLoginBinding, AnyViewModel>() {
 
 
     private fun checkUser(){
-
+        FirebaseHelp.getObject<UserModel>(FirebaseHelp.USERS,FirebaseHelp.getUserID(),{
+            if(it.isAdmin == true){
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToAdminDashboardFragment())
+            }else{
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToClientDashboardFragment())
+            }
+        },{
+            showErrorMsg(it)
+        })
     }
 
 
