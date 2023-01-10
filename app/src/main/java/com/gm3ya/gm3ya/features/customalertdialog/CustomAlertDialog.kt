@@ -15,7 +15,7 @@ class CustomAlertDialog : BaseFragmentDialog<CustomAlertDialogBinding>() {
     private fun observeOkButton() {
         binding.btnOk.setOnClickListener {
             dialog?.dismiss()
-            findNavController().navigate(CustomAlertDialogDirections.actionCustomAlertDialogToClientDashboardFragment())
+            findNavController().popBackStack()
         }
     }
 }

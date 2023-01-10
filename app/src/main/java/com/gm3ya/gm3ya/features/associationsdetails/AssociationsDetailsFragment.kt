@@ -21,5 +21,8 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
 
     override fun onFragmentCreated() {
 
+        binding.rvAssociations.adapter = DetailAssociationAdapter(listOf("ahmed","alaa","ahmed","alaa","ahmed","alaa")){
+
+        }
     }
 }

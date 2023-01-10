@@ -55,7 +55,15 @@
         android:id="@+id/clientDashboardFragment"
         android:name="com.gm3ya.gm3ya.features.clientdashboard.ClientDashboardFragment"
         android:label="fragment_client_dashboard"
-        tools:layout="@layout/fragment_client_dashboard" />
+        tools:layout="@layout/fragment_client_dashboard" >
+        <action
+            android:id="@+id/action_clientDashboardFragment_to_customAlertDialog"
+            app:destination="@id/customAlertDialog"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/adminDashboardFragment"
         android:name="com.gm3ya.gm3ya.features.admindashboard.AdminDashboardFragment"
@@ -77,13 +85,19 @@
         android:id="@+id/allAssociationsFragment"
         android:name="com.gm3ya.gm3ya.features.allassociations.AllAssociationsFragment"
         android:label="fragment_all_associations"
-        tools:layout="@layout/fragment_all_associations" />
+        tools:layout="@layout/fragment_all_associations" >
+        <action
+            android:id="@+id/action_allAssociationsFragment_to_associationsDetailsFragment"
+            app:destination="@id/associationsDetailsFragment" />
+    </fragment>
     <dialog
         android:id="@+id/customAlertDialog"
         android:name="com.gm3ya.gm3ya.features.customalertdialog.CustomAlertDialog"
         android:label="CustomAlertDialog" >
-        <action
-            android:id="@+id/action_customAlertDialog_to_clientDashboardFragment"
-            app:destination="@id/clientDashboardFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/associationsDetailsFragment"
+        android:name="com.gm3ya.gm3ya.features.associationsdetails.AssociationsDetailsFragment"
+        android:label="fragment_associations_details"
+        tools:layout="@layout/fragment_associations_details" />
 </navigation>

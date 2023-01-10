@@ -13,12 +13,14 @@
 
     <TextView
         android:id="@+id/tv_user_association_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="29dp"
+        android:layout_height="29dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="17dp"
         android:layout_marginBottom="14dp"
         android:text="1"
+        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/white"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
@@ -54,46 +56,19 @@
         app:layout_constraintStart_toStartOf="@+id/tv_username"
         app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layout_user_paid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="12dp"
-        android:visibility="gone"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_paid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Paid"
-            android:textColor="#35BCCB"
-            android:textSize="13sp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="3dp"
-            android:src="@drawable/icon_paid"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
     <TextView
-        android:id="@+id/tv_user_not_paid"
+        android:id="@+id/tv_paid_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="12dp"
-        android:orientation="horizontal"
-        android:text="Not paid"
-        android:visibility="visible"
+        tools:text="Not paid"
         android:textSize="13sp"
-        android:textColor="#E82532"
+        android:drawablePadding="2dp"
+        android:textColor="@color/paid_text_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableEndCompat="@drawable/ic_paid" />
 
     <TextView
         android:id="@+id/tv_date"
@@ -105,10 +80,11 @@
         android:text="04 Jan 2023"
         android:visibility="gone"
         android:textSize="11sp"
+        tools:visibility="visible"
         android:textColor="#BEBEBE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_user_paid" />
+        app:layout_constraintTop_toBottomOf="@id/tv_paid_state"/>
 
     <TextView
         android:id="@+id/tv_send_warning"
@@ -127,5 +103,5 @@
         android:textColor="#003233"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_not_paid" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_paid_state" />
 </androidx.constraintlayout.widget.ConstraintLayout>

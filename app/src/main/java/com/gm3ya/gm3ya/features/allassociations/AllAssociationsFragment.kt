@@ -1,6 +1,7 @@
 package com.gm3ya.gm3ya.features.allassociations
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.databinding.FragmentAllAccountsBinding
@@ -14,6 +15,9 @@ class AllAssociationsFragment : BaseFragment<FragmentAllAssociationsBinding, Any
     }
 
     override fun onFragmentCreated() {
+
+
+        findNavController().navigate(AllAssociationsFragmentDirections.actionAllAssociationsFragmentToAssociationsDetailsFragment())
 
     }
 }
