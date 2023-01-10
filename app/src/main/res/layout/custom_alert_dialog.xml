@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="28dp"
+    android:layout_marginEnd="28dp"
+    android:background="@drawable/custom_dialog_background">
+
+    <TextView
+        android:id="@+id/tv_user_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="7"
+        android:textSize="36sp"
+        android:textColor="#35BCCB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_your_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Your Number"
+        android:textSize="18sp"
+        android:textColor="#707070"
+        app:layout_constraintEnd_toEndOf="@+id/tv_user_number"
+        app:layout_constraintStart_toStartOf="@+id/tv_user_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_number" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Please, wait admin to approve your request."
+        android:textSize="13sp"
+        android:textColor="#707070"
+        app:layout_constraintEnd_toEndOf="@+id/tv_your_number"
+        app:layout_constraintStart_toStartOf="@+id/tv_your_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_your_number" />
+
+    <TextView
+        android:id="@+id/tv_terms_conditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/all_associations_item_cardview_background"
+        android:text="Terms and conditions apply"
+        android:padding="5dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:textSize="13sp"
+        android:textColor="#AFAFAF"
+        app:layout_constraintEnd_toEndOf="@+id/tv_message"
+        app:layout_constraintStart_toStartOf="@+id/tv_message"
+        app:layout_constraintTop_toBottomOf="@+id/tv_message" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="26dp"
+        android:text="OK"
+        android:background="@drawable/custom_dialog_button"
+        android:textSize="22sp"
+        android:padding="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_terms_conditions"
+        app:layout_constraintStart_toStartOf="@+id/tv_terms_conditions"
+        app:layout_constraintTop_toBottomOf="@+id/tv_terms_conditions" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

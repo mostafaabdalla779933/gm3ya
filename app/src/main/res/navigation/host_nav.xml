@@ -60,5 +60,30 @@
         android:id="@+id/adminDashboardFragment"
         android:name="com.gm3ya.gm3ya.features.admindashboard.AdminDashboardFragment"
         android:label="fragment_admin_dashboard"
-        tools:layout="@layout/fragment_admin_dashboard" />
+        tools:layout="@layout/fragment_admin_dashboard" >
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_allAccountsFragment"
+            app:destination="@id/allAccountsFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_allAssociationsFragment"
+            app:destination="@id/allAssociationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allAccountsFragment"
+        android:name="com.gm3ya.gm3ya.features.allaccounts.AllAccountsFragment"
+        android:label="fragment_all_accounts"
+        tools:layout="@layout/fragment_all_accounts" />
+    <fragment
+        android:id="@+id/allAssociationsFragment"
+        android:name="com.gm3ya.gm3ya.features.allassociations.AllAssociationsFragment"
+        android:label="fragment_all_associations"
+        tools:layout="@layout/fragment_all_associations" />
+    <dialog
+        android:id="@+id/customAlertDialog"
+        android:name="com.gm3ya.gm3ya.features.customalertdialog.CustomAlertDialog"
+        android:label="CustomAlertDialog" >
+        <action
+            android:id="@+id/action_customAlertDialog_to_clientDashboardFragment"
+            app:destination="@id/clientDashboardFragment" />
+    </dialog>
 </navigation>
