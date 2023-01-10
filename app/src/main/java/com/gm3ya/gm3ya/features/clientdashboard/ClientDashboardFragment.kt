@@ -18,7 +18,14 @@ class ClientDashboardFragment: BaseFragment<FragmentClientDashboardBinding, AnyV
     override fun onFragmentCreated() {
 
         addTabListener()
+        initAdapter()
+    }
 
+    private fun initAdapter(){
+
+        binding.rvAssociations.adapter = AssociationAdapter(listOf("one","name","hamada","one","name","hamada")){
+
+        }
     }
 
 
@@ -35,7 +42,6 @@ class ClientDashboardFragment: BaseFragment<FragmentClientDashboardBinding, AnyV
                     }
                 }
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
