@@ -68,7 +68,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="26dp"
         android:text="OK"
-        android:backgroundTint="@drawable/custom_dialog_button"
+        android:background="@drawable/custom_dialog_button"
         android:textSize="22sp"
         android:padding="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
