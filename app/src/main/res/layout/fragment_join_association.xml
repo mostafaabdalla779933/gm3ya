@@ -78,7 +78,7 @@
                 android:id="@+id/iv_user_picture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_circular_add" />
+                android:src="@drawable/ic_circular_add"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <EditText
@@ -327,6 +327,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="Phone number"
+            android:inputType="phone"
             android:padding="14dp"
             app:layout_constraintEnd_toEndOf="@+id/layout_home_address_second_part"
             app:layout_constraintStart_toStartOf="@id/layout_home_address_second_part"
@@ -344,8 +345,135 @@
             app:layout_constraintStart_toStartOf="@id/et_phone_number"
             app:layout_constraintTop_toBottomOf="@id/et_phone_number" />
 
-        
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_id_pictures"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="@+id/et_email"
+            app:layout_constraintStart_toStartOf="@id/et_email"
+            app:layout_constraintTop_toBottomOf="@id/et_email">
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_upload_front"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:text="Upload ID front:" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/layout_id_front"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/pick_picture_bg">
+
+                    <ImageView
+                        android:id="@+id/iv_user_id_front"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_circular_add"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_upload_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:text="Upload ID back:" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/layout_id_back"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/pick_picture_bg">
+
+                    <ImageView
+                        android:id="@+id/iv_user_id_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_circular_add"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/EditText.join"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="14dp"
+            app:layout_constraintEnd_toEndOf="@+id/layout_id_pictures"
+            app:layout_constraintStart_toStartOf="@id/layout_id_pictures"
+            app:layout_constraintTop_toBottomOf="@id/layout_id_pictures" />
+
+        <EditText
+            android:id="@+id/et_confirm_password"
+            style="@style/EditText.join"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Confirm password"
+            android:inputType="textPassword"
+            android:padding="14dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_password"
+            app:layout_constraintStart_toStartOf="@id/et_password"
+            app:layout_constraintTop_toBottomOf="@id/et_password" />
+
+        <TextView
+            android:id="@+id/tv_fingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:text="Scan fingerprint:"
+            app:layout_constraintStart_toStartOf="@id/et_confirm_password"
+            app:layout_constraintTop_toBottomOf="@id/et_confirm_password" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_send_request"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="SEND REQUEST"
+            android:inputType="textEmailAddress"
+            style="@style/myMaterialButton35BCCB"
+            android:paddingVertical="14dp"
+            android:textSize="18sp"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="45dp"
+            app:cornerRadius="5dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/et_confirm_password"
+            app:layout_constraintStart_toStartOf="@id/tv_fingerprint"
+            app:layout_constraintTop_toBottomOf="@id/tv_fingerprint"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>
