@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="28dp"
-    android:layout_marginEnd="28dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
     android:background="@drawable/custom_dialog_background">
 
     <TextView
@@ -16,10 +18,7 @@
         android:layout_marginTop="24dp"
         android:text="7"
         android:textSize="36sp"
-        android:textColor="#35BCCB"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#35BCCB" />
 
     <TextView
         android:id="@+id/tv_your_number"
@@ -28,10 +27,7 @@
         android:layout_marginTop="4dp"
         android:text="Your Number"
         android:textSize="18sp"
-        android:textColor="#707070"
-        app:layout_constraintEnd_toEndOf="@+id/tv_user_number"
-        app:layout_constraintStart_toStartOf="@+id/tv_user_number"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_number" />
+        android:textColor="#707070" />
 
     <TextView
         android:id="@+id/tv_message"
@@ -40,10 +36,8 @@
         android:layout_marginTop="18dp"
         android:text="Please, wait admin to approve your request."
         android:textSize="13sp"
-        android:textColor="#707070"
-        app:layout_constraintEnd_toEndOf="@+id/tv_your_number"
-        app:layout_constraintStart_toStartOf="@+id/tv_your_number"
-        app:layout_constraintTop_toBottomOf="@+id/tv_your_number" />
+        android:maxLines="1"
+        android:textColor="#707070" />
 
     <TextView
         android:id="@+id/tv_terms_conditions"
@@ -56,10 +50,7 @@
         android:paddingStart="25dp"
         android:paddingEnd="25dp"
         android:textSize="13sp"
-        android:textColor="#AFAFAF"
-        app:layout_constraintEnd_toEndOf="@+id/tv_message"
-        app:layout_constraintStart_toStartOf="@+id/tv_message"
-        app:layout_constraintTop_toBottomOf="@+id/tv_message" />
+        android:textColor="#AFAFAF"/>
 
     <Button
         android:id="@+id/btn_ok"
@@ -68,12 +59,9 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="26dp"
         android:text="OK"
+        android:textColor="@color/white"
         android:background="@drawable/custom_dialog_button"
         android:textSize="22sp"
-        android:padding="9dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tv_terms_conditions"
-        app:layout_constraintStart_toStartOf="@+id/tv_terms_conditions"
-        app:layout_constraintTop_toBottomOf="@+id/tv_terms_conditions" />
+        android:padding="9dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
