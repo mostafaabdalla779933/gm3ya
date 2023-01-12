@@ -63,6 +63,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_clientDashboardFragment_to_newAssociationFragment"
+            app:destination="@id/newAssociationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/adminDashboardFragment"
@@ -100,4 +107,9 @@
         android:name="com.gm3ya.gm3ya.features.associationsdetails.AssociationsDetailsFragment"
         android:label="fragment_associations_details"
         tools:layout="@layout/fragment_associations_details" />
+    <fragment
+        android:id="@+id/newAssociationFragment"
+        android:name="com.gm3ya.gm3ya.features.newassociation.NewAssociationFragment"
+        android:label="fragment_new_association"
+        tools:layout="@layout/fragment_new_association" />
 </navigation>

@@ -18,6 +18,8 @@ enum class UserState(val value:String){
 
 @Parcelize
 data class AssociationModel(
+    val name:String?=null,
+    val creatorId:String?=null,
     val users:List<UserModel>?=null,
     val startDate:String? = null,
     val endDate:String? = null,
@@ -25,8 +27,9 @@ data class AssociationModel(
     val state:String?= null,
     val maxSize:Int?=null,
     val amountPerMonth:String?=null,
-    val months:List<MonthModel>?=null,
-    val totalAmount:String?=null
+    val months:List<MonthModel?>?=null,
+    val totalAmount:String?=null,
+    val approved:Boolean?=false
 ): Parcelable
 
 
@@ -36,7 +39,7 @@ enum class AssociationState(val value:String){
 
 @Parcelize
 data class MonthModel(
-    val name:String?=null,
+    val date:String?=null,
     val paidMonths:List<PaidMonthModel>?=null
 ): Parcelable
 

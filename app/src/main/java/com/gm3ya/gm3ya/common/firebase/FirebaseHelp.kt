@@ -23,6 +23,8 @@ object FirebaseHelp {
 
     const val PRODUCTS  = "all_products"
 
+    const val ASSOCIATION  = "ASSOCIATION"
+
     const val ORDERS = "all_orders"
 
     const val CARDS = "cards"

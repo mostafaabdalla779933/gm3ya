@@ -20,7 +20,7 @@ class ClientDashboardFragment: BaseFragment<FragmentClientDashboardBinding, AnyV
 
 
         binding.ivAdd.setOnClickListener {
-            findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToCustomAlertDialog())
+            findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToNewAssociationFragment())
         }
         addTabListener()
         initAdapter()
