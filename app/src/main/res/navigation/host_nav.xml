@@ -63,6 +63,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_clientDashboardFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminDashboardFragment"
@@ -75,6 +78,9 @@
         <action
             android:id="@+id/action_adminDashboardFragment_to_allAssociationsFragment"
             app:destination="@id/allAssociationsFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/allAccountsFragment"
@@ -100,4 +106,9 @@
         android:name="com.gm3ya.gm3ya.features.associationsdetails.AssociationsDetailsFragment"
         android:label="fragment_associations_details"
         tools:layout="@layout/fragment_associations_details" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.gm3ya.gm3ya.features.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

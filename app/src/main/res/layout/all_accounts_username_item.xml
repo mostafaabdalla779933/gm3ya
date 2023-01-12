@@ -11,7 +11,7 @@
     android:layout_marginEnd="16dp">
 
         <TextView
-            android:id="@+id/tv_association_name"
+            android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
@@ -29,9 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_association_name"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_user_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_association_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_user_name"
             app:srcCompat="@drawable/arrow_username_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
