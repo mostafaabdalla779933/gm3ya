@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
@@ -15,7 +16,7 @@ class AllAccountsFragment : BaseFragment<FragmentAllAccountsBinding, AnyViewMode
 
     private val adapter: AllAccountsAdapter by lazy {
         AllAccountsAdapter { user ->
-            print("$user username clicked")
+            findNavController().navigate(AllAccountsFragmentDirections.actionAllAccountsFragmentToUserProfileFragment(user))
         }
     }
 
@@ -26,10 +27,17 @@ class AllAccountsFragment : BaseFragment<FragmentAllAccountsBinding, AnyViewMode
     }
 
     override fun onFragmentCreated() {
+        setNavigationButton()
         binding.rvUsernames.adapter = adapter
         showLoading()
         getAllAccounts()
         binding.etSearchUsername.addTextChangedListener(textWatcher)
+    }
+
+    private fun setNavigationButton() {
+        binding.toolbarAllAccountsFragment.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun getAllAccounts() {

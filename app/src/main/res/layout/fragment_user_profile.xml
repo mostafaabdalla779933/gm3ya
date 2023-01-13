@@ -37,7 +37,7 @@
             android:layout_marginTop="10dp"
             android:textColor="#003233"
             android:textSize="20sp"
-            android:text="Username" />
+            tools:text="Username" />
 
         <TextView
             android:id="@+id/tv_association_name"
@@ -101,7 +101,7 @@
             android:paddingEnd="20dp"
             android:paddingTop="12dp"
             android:paddingBottom="11dp"
-            android:text="×××××××××××××××" />
+            tools:text="×××××××××××××××" />
 
         <TextView
             android:id="@+id/tv_user_birth"
@@ -257,7 +257,7 @@
             android:paddingTop="12dp"
             android:paddingBottom="11dp"
             android:textSize="15sp"
-            android:text="username@email.com" />
+            tools:text="username@email.com" />
 
         <TextView
             android:id="@+id/tv_id_front"

@@ -21,8 +21,6 @@ object FirebaseHelp {
 
     const val USERS = "all_users"
 
-    const val ASSOCIATIONS = "all_Associations"
-
     const val PRODUCTS  = "all_products"
 
     const val ASSOCIATION  = "ASSOCIATION"

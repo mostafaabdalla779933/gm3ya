@@ -15,7 +15,9 @@ class AllAccountsAdapter(val onClick:(UserModel)->Unit): ListAdapter<UserModel, 
         fun onBind(user:UserModel, position: Int){
             rowView.apply {
                 tvUserName.text = user.userName
-                onClick(user)
+                accountItemCard.setOnClickListener {
+                    onClick(user)
+                }
             }
         }
     }

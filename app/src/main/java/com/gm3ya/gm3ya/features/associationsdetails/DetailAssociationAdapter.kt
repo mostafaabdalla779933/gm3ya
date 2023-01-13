@@ -1,30 +1,40 @@
 package com.gm3ya.gm3ya.features.associationsdetails
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.gm3ya.gm3ya.common.firebase.data.PaidMonthModel
+import com.gm3ya.gm3ya.common.firebase.data.UserModel
 import com.gm3ya.gm3ya.databinding.AssociationDetailsAssociationItemBinding
 
 
-class DetailAssociationAdapter(val list:List<String>,val onClick:(String)->Unit): RecyclerView.Adapter<DetailAssociationAdapter.ViewHolder>() {
+class DetailAssociationAdapter(val list:List<PaidMonthModel>, val onClick:(String)->Unit): RecyclerView.Adapter<DetailAssociationAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val rowView: AssociationDetailsAssociationItemBinding): RecyclerView.ViewHolder(rowView.root){
-        fun onBind(str:String,position: Int){
+    var number = 0
+
+    inner class ViewHolder(private val rowView: AssociationDetailsAssociationItemBinding): RecyclerView.ViewHolder(rowView.root){
+        fun onBind(user: PaidMonthModel, position: Int){
             rowView.apply {
+                number++
+                tvUserAssociationNumber.text = number.toString()
+                tvUsername.text = user.userName
+                tvUserid.text = user.userId
+//                root.setOnClickListener {
+//                    onClick(str)
+//                }
 
-                tvPaidState.text= str
-                root.setOnClickListener {
-                    onClick(str)
-                }
-
-                when(position){
-                    0->{
+                when(user.state){
+                    true->{
+                        tvDate.visibility = View.VISIBLE
+                        tvSendWarning.visibility = View.INVISIBLE
                         tvPaidState.isSelected = true
                     }
-                    1 ->{
+                    else -> {
+                        tvSendWarning.visibility = View.VISIBLE
+                        tvDate.visibility = View.INVISIBLE
                         tvPaidState.isSelected = false
                     }
-
                 }
             }
 
@@ -42,6 +52,4 @@ class DetailAssociationAdapter(val list:List<String>,val onClick:(String)->Unit)
         holder.onBind(list[position],position)
 
     }
-
-
 }
