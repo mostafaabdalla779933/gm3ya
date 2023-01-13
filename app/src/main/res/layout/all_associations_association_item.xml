@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/association_item_card"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,12 +12,12 @@
     android:layout_marginEnd="16dp">
 
     <TextView
-        android:id="@+id/tv_user_name"
+        android:id="@+id/tv_association_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="9dp"
-        android:text="Associations Name"
+        tools:text="Associations Name"
         android:textSize="16sp"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
         android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_members_number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_user_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_association_name"
         app:srcCompat="@drawable/arrow_associations_item" />
 
     <TextView
@@ -42,12 +43,12 @@
         android:paddingEnd="5dp"
         android:padding="5dp"
         android:background="@drawable/all_associations_item_tv_background"
-        android:text="6/10 Members"
+        tools:text="6/10 Members"
         android:textSize="12sp"
         android:textColor="#A2A2A2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_user_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
+        app:layout_constraintStart_toStartOf="@+id/tv_association_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_association_name" />
 
     <TextView
         android:id="@+id/tv_total_amount"
@@ -58,7 +59,7 @@
         android:paddingStart="9dp"
         android:paddingEnd="9dp"
         android:background="@drawable/all_associations_item_tv_background"
-        android:text="1000$"
+        tools:text="1000$"
         android:textSize="12sp"
         android:textColor="#A2A2A2"
         app:layout_constraintBottom_toBottomOf="@+id/tv_members_number"

@@ -19,6 +19,7 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
         setNavigationButtons()
         showLoading()
         getAllAccounts()
+        getAllAssociations()
         hideLoading()
     }
 
@@ -42,7 +43,6 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
         FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS,{ allUsers ->
             val users = allUsers.filter { it.isAdmin == false }
             binding.tvAccountsNumber.text = users.count().toString()
-            getAllAssociations()
         },{
             hideLoading()
             showErrorMsg(it)
@@ -50,7 +50,7 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
     }
 
     private fun getAllAssociations() {
-        FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.ASSOCIATIONS,{
+        FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.ASSOCIATION,{
             binding.tvAssociationsNumber.text = it.count().toString()
         },{
             hideLoading()

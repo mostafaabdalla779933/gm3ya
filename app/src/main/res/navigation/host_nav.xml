@@ -85,19 +85,39 @@
         tools:layout="@layout/fragment_admin_dashboard" >
         <action
             android:id="@+id/action_adminDashboardFragment_to_allAccountsFragment"
-            app:destination="@id/allAccountsFragment" />
+            app:destination="@id/allAccountsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_adminDashboardFragment_to_allAssociationsFragment"
-            app:destination="@id/allAssociationsFragment" />
+            app:destination="@id/allAssociationsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_adminDashboardFragment_to_notificationFragment"
-            app:destination="@id/notificationFragment" />
+            app:destination="@id/notificationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/allAccountsFragment"
         android:name="com.gm3ya.gm3ya.features.allaccounts.AllAccountsFragment"
         android:label="fragment_all_accounts"
-        tools:layout="@layout/fragment_all_accounts" />
+        tools:layout="@layout/fragment_all_accounts" >
+        <action
+            android:id="@+id/action_allAccountsFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/allAssociationsFragment"
         android:name="com.gm3ya.gm3ya.features.allassociations.AllAssociationsFragment"
@@ -105,7 +125,11 @@
         tools:layout="@layout/fragment_all_associations" >
         <action
             android:id="@+id/action_allAssociationsFragment_to_associationsDetailsFragment"
-            app:destination="@id/associationsDetailsFragment" />
+            app:destination="@id/associationsDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <dialog
         android:id="@+id/customAlertDialog"
@@ -116,7 +140,11 @@
         android:id="@+id/associationsDetailsFragment"
         android:name="com.gm3ya.gm3ya.features.associationsdetails.AssociationsDetailsFragment"
         android:label="fragment_associations_details"
-        tools:layout="@layout/fragment_associations_details" />
+        tools:layout="@layout/fragment_associations_details" >
+        <argument
+            android:name="association"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
+    </fragment>
     <fragment
         android:id="@+id/notificationFragment"
         android:name="com.gm3ya.gm3ya.features.notification.NotificationFragment"
@@ -127,4 +155,13 @@
         android:name="com.gm3ya.gm3ya.features.newassociation.NewAssociationFragment"
         android:label="fragment_new_association"
         tools:layout="@layout/fragment_new_association" />
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.gm3ya.gm3ya.features.userprofile.UserProfileFragment"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.UserModel" />
+    </fragment>
 </navigation>
