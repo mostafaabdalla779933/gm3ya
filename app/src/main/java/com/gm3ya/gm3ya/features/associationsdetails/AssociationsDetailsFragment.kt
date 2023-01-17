@@ -28,12 +28,13 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onFragmentCreated() {
         association = args.association
 
         setNavigationButton()
         setupView()
-        //list = getDateList(association?.startDate, association?.endDate)
+        list = getDateList(association?.startDate, association?.endDate)
         binding.apply {
             list.forEach {
                 tabLayout.addTab(tabLayout.newTab().setId(1).setText(it))
@@ -90,7 +91,7 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
     @RequiresApi(Build.VERSION_CODES.O)
     fun getDateList(strStartDate: String?, strEndDate: String?): List<String> {
         // Formatter for the input
-        val inputFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("EEE MMM d hh:mm:ss a yyyy", Locale.US)
+        val inputFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("EEE MMM d HH:mm:ss 'GMT+02:00' yyyy", Locale.US)
 
         // Formatter for the output
         val outputFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("MMM")
