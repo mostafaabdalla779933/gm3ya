@@ -17,7 +17,9 @@ class ClientDashboardFragment: BaseFragment<FragmentClientDashboardBinding, AnyV
     }
 
     override fun onFragmentCreated() {
-
+        binding.ivNotification.setOnClickListener {
+            findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToCustomAlertDialog())
+        }
 
         binding.ivAdd.setOnClickListener {
             findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToNewAssociationFragment())
