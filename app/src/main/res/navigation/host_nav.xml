@@ -13,6 +13,23 @@
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_splashFragment_to_adminDashboardFragment"
+            app:destination="@id/adminDashboardFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+        <action
+            android:id="@+id/action_splashFragment_to_clientDashboardFragment"
+            app:destination="@id/clientDashboardFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -24,9 +41,16 @@
         android:name="com.gm3ya.gm3ya.features.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
+        <argument
+            android:name="isAdmin"
+            android:defaultValue="false"
+            app:argType="boolean"/>
         <action
             android:id="@+id/action_loginFragment_to_signupFragment"
             app:destination="@id/signupFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -35,6 +59,8 @@
         <action
             android:id="@+id/action_loginFragment_to_clientDashboardFragment"
             app:destination="@id/clientDashboardFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -130,6 +156,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_allAssociationsFragment_to_associationDetailForeignFragment"
+            app:destination="@id/associationDetailForeignFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <dialog
         android:id="@+id/customAlertDialog"
@@ -163,5 +196,14 @@
         <argument
             android:name="user"
             app:argType="com.gm3ya.gm3ya.common.firebase.data.UserModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/associationDetailForeignFragment"
+        android:name="com.gm3ya.gm3ya.features.associationsdetails.AssociationDetailForeignFragment"
+        android:label="fragment_association_detail_foreign"
+        tools:layout="@layout/fragment_association_detail_foreign" >
+        <argument
+            android:name="association"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
     </fragment>
 </navigation>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
+import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
 import com.gm3ya.gm3ya.databinding.FragmentClientDashboardBinding
 import com.google.android.material.tabs.TabLayout
 
@@ -17,12 +18,20 @@ class ClientDashboardFragment: BaseFragment<FragmentClientDashboardBinding, AnyV
     }
 
     override fun onFragmentCreated() {
-        binding.ivNotification.setOnClickListener {
-            findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToCustomAlertDialog())
-        }
 
-        binding.ivAdd.setOnClickListener {
-            findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToNewAssociationFragment())
+        binding.apply {
+            ivNotification.setOnClickListener {
+                findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToNotificationFragment())
+            }
+
+            ivAdd.setOnClickListener {
+                findNavController().navigate(ClientDashboardFragmentDirections.actionClientDashboardFragmentToNewAssociationFragment())
+            }
+            ivLogout.setOnClickListener {
+                FirebaseHelp.logout()
+                requireActivity().finish()
+                requireActivity().startActivity(requireActivity().intent)
+            }
         }
         addTabListener()
         initAdapter()

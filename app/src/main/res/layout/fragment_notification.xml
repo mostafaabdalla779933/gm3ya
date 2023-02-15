@@ -10,7 +10,7 @@
     tools:context=".features.notification.NotificationFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_notification_fragment"
+        android:id="@+id/tb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F5F5F5"
@@ -23,6 +23,7 @@
         android:id="@+id/rv_notifications"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginTop="10dp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

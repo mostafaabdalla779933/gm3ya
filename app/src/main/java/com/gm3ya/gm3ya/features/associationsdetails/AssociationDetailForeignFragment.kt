@@ -4,36 +4,29 @@ package com.gm3ya.gm3ya.features.associationsdetails
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.buildingmaterials.buildingmaterials.common.getMonth
 import com.buildingmaterials.buildingmaterials.common.getMonthAndYear
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
-import com.gm3ya.gm3ya.databinding.FragmentAssociationsDetailsBinding
-import com.google.android.material.tabs.TabLayout
-import java.text.SimpleDateFormat
-import java.util.*
-
-class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBinding, AnyViewModel>(){
-    private val args: AssociationsDetailsFragmentArgs by navArgs()
+import com.gm3ya.gm3ya.databinding.FragmentAssociationDetailForeignBinding
 
 
-    override fun initBinding() = FragmentAssociationsDetailsBinding.inflate(layoutInflater)
+
+class AssociationDetailForeignFragment : BaseFragment<FragmentAssociationDetailForeignBinding, AnyViewModel>(){
+
+    private val args: AssociationDetailForeignFragmentArgs by navArgs()
+    override fun initBinding() = FragmentAssociationDetailForeignBinding.inflate(layoutInflater)
 
     override fun initViewModel() {
         viewModel = ViewModelProvider(this)[AnyViewModel::class.java]
     }
 
-
-
     override fun onFragmentCreated() {
-
-
-        setNavigationButton()
         setupView()
 
         binding.apply {
-            args.association.months?.forEach {
-                tabLayout.addTab(tabLayout.newTab().setId(1).setText(it?.date?.getMonth()))
+
+            tb.setNavigationOnClickListener {
+                findNavController().popBackStack()
             }
 
             rvAssociations.adapter = args.association.months?.get(0)?.let {
@@ -42,21 +35,13 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
                     }
                 }
             }
-
-            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-                override fun onTabSelected(tab: TabLayout.Tab?) {
-                   showErrorMsg("${tab?.id} +  ${tab?.text}")
-                }
-                override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                override fun onTabReselected(tab: TabLayout.Tab?) {}
-            })
         }
     }
 
     private fun setupView() {
         binding.apply {
             args.association.let {
-                toolbarAllAssociationsDetails.title = it.name
+                tb.title = it.name
                 tvAssociationTotalNumber.text = it.totalAmount
                 tvAssociationMonthsNumber.text = it.months?.count().toString()
                 tvAssociationMembersNumber.text = "${it.users?.count()}/${it.maxSize}"
@@ -67,14 +52,4 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
         }
     }
 
-    private fun setNavigationButton() {
-        binding.toolbarAllAssociationsDetails.setNavigationOnClickListener {
-            findNavController().popBackStack()
-        }
-    }
-
-
 }
-
-
-

@@ -14,8 +14,8 @@ import com.google.android.material.textfield.TextInputEditText
 import java.util.regex.Pattern
 import java.math.RoundingMode
 import java.text.DecimalFormat
-
-
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 fun TextInputEditText.getString(): String {
@@ -131,4 +131,18 @@ fun Double.roundOffDecimal(): Double {
 
 fun Context.showMessage(message:String){
     Toast.makeText(this,message, Toast.LENGTH_LONG).show()
+}
+
+
+fun String.getMonth(): String {
+    val inputFormat = SimpleDateFormat("EEE MMM d HH:mm:ss 'GMT+02:00' yyyy", Locale.US)
+    val outputFormat = SimpleDateFormat("MMM", Locale.US)
+    return outputFormat.format(inputFormat.parse(this))
+}
+
+
+fun String.getMonthAndYear(): String {
+    val inputFormat = SimpleDateFormat("EEE MMM d HH:mm:ss 'GMT+02:00' yyyy", Locale.US)
+    val outputFormat = SimpleDateFormat("MMM yyyy", Locale.US)
+    return outputFormat.format(inputFormat.parse(this))
 }

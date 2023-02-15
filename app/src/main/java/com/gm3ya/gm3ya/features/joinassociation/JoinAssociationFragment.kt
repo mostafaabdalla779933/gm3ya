@@ -1,12 +1,20 @@
 package com.gm3ya.gm3ya.features.joinassociation
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.gm3ya.gm3ya.R
 
-class JoinAssociationFragment : Fragment() {
+import androidx.lifecycle.ViewModelProvider
+import com.gm3ya.gm3ya.common.base.AnyViewModel
+import com.gm3ya.gm3ya.common.base.BaseFragment
+import com.gm3ya.gm3ya.databinding.FragmentJoinAssociationBinding
+
+class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, AnyViewModel>() {
+    override fun initBinding()=FragmentJoinAssociationBinding.inflate(layoutInflater)
+
+    override fun initViewModel() {
+        viewModel = ViewModelProvider(this)[AnyViewModel::class.java]
+    }
+
+    override fun onFragmentCreated() {
+
+    }
 
 }

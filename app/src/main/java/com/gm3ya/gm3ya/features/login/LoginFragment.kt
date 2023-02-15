@@ -1,8 +1,10 @@
 package com.gm3ya.gm3ya.features.login
 
 
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.buildingmaterials.buildingmaterials.common.getString
 import com.buildingmaterials.buildingmaterials.common.isStringEmpty
 import com.gm3ya.gm3ya.common.base.AnyViewModel
@@ -13,6 +15,8 @@ import com.gm3ya.gm3ya.databinding.FragmentLoginBinding
 
 
 class LoginFragment  : BaseFragment<FragmentLoginBinding, AnyViewModel>() {
+
+    val args:LoginFragmentArgs by navArgs()
     override fun initBinding() = FragmentLoginBinding.inflate(layoutInflater)
 
     override fun initViewModel() {
@@ -26,6 +30,10 @@ class LoginFragment  : BaseFragment<FragmentLoginBinding, AnyViewModel>() {
         }
         binding.btnSignup.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignupFragment())
+        }
+
+        if (args.isAdmin){
+            binding.btnSignup.visibility = View.GONE
         }
 
     }
