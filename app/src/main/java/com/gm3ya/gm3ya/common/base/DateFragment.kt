@@ -28,7 +28,7 @@ class DateFragment(private var listener: DatePickerDialog.OnDateSetListener) : D
                 requireContext(),
                 listener, get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH)
             ).let { datePickerDialog ->
-                datePickerDialog.datePicker.minDate = System.currentTimeMillis() + 1000
+                datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
                 datePickerDialog.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY)
                 return datePickerDialog
             }

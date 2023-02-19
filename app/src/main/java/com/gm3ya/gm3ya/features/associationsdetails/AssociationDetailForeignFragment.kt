@@ -1,12 +1,15 @@
 package com.gm3ya.gm3ya.features.associationsdetails
 
 
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.buildingmaterials.buildingmaterials.common.getMonthAndYear
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
+import com.gm3ya.gm3ya.common.firebase.data.AssociationState
+import com.gm3ya.gm3ya.common.firebase.data.UserModel
 import com.gm3ya.gm3ya.databinding.FragmentAssociationDetailForeignBinding
 
 
@@ -29,11 +32,34 @@ class AssociationDetailForeignFragment : BaseFragment<FragmentAssociationDetailF
                 findNavController().popBackStack()
             }
 
-            rvAssociations.adapter = args.association.months?.get(0)?.let {
-                it.paidMonths?.let { paidMonths ->
-                    DetailAssociationAdapter(paidMonths){
-                    }
-                }
+            btnInstantJoin.setOnClickListener {
+                findNavController().navigate(
+                    AssociationDetailForeignFragmentDirections.actionAssociationDetailForeignFragmentToJoinAssociationFragment(
+                        isChoosePlace = false,
+                        association = args.association
+                    )
+                )
+            }
+            btnChoosePlace.setOnClickListener {
+                findNavController().navigate(
+                    AssociationDetailForeignFragmentDirections.actionAssociationDetailForeignFragmentToJoinAssociationFragment(
+                        isChoosePlace = true,
+                        association = args.association
+                    )
+                )
+            }
+
+            val list : MutableList<UserModel?>  =  args.association.users?.toMutableList() ?: mutableListOf()
+            val space  = (args.association.maxSize ?: 0) - (args.association.users?.size ?: 0)
+            repeat(space){
+                list.add(null)
+            }
+            rvAssociations.adapter = MembersForForeignAdapter(list) {
+            }
+
+            if(args.association.state == AssociationState.Completed.value){
+                btnChoosePlace.visibility = View.GONE
+                btnInstantJoin.visibility = View.GONE
             }
         }
     }

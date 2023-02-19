@@ -73,7 +73,8 @@ class SignupFragment  : BaseFragment<FragmentSignupBinding, AnyViewModel>() {
                 userName = etUserName.getString(),
                 email = etEmail.getString(),
                 userId = id,
-                password = etPass.getString()
+                password = etPass.getString(),
+                hash = System.currentTimeMillis().toString()
             )
             FirebaseHelp.addObject<UserModel>(
                 user,

@@ -1,5 +1,6 @@
 package com.gm3ya.gm3ya.common.firebase.data
 
+import android.net.Uri
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
@@ -9,7 +10,25 @@ data class UserModel(
     val userName:String? = "",
     val password:String? ="",
     var userId :String? ="",
-    var isAdmin:Boolean?=false
+    var isAdmin:Boolean?=false,
+    var hash:String?=null,
+    var place:Int? = null,
+    var profileUri: Uri?=null,
+    var profileUrl:String?=null,
+    var backUri:Uri?=null,
+    var frontUri:Uri?= null,
+    var fullName:String?="",
+    var idNumber:String?="",
+    var birthDate:String?="",
+    var nationality:String?="",
+    var gov:String?="",
+    var city:String?="",
+    var block:String?="",
+    var street:String?="",
+    var building:String?="",
+    var role:String?="",
+    var apartment:String?="",
+    var phone:String?=""
 ) : Parcelable
 
 enum class UserState(val value:String){
@@ -46,9 +65,8 @@ data class MonthModel(
 
 @Parcelize
 data class PaidMonthModel(
-    val userId:String?=null,
-    val userName:String?=null,
-    val state:Boolean?=null
+    val userModel: UserModel?=null,
+    val state:Boolean?=false
 ): Parcelable
 
 

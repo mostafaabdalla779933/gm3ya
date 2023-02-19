@@ -35,6 +35,7 @@ class SplashFragment  : BaseFragment<FragmentSplashBinding, AnyViewModel>() {
             showLoading()
             FirebaseHelp.getUser({
                 hideLoading()
+                FirebaseHelp.user = it
                 if (it.isAdmin == true) {
                     findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAdminDashboardFragment())
                 }else{

@@ -22,6 +22,8 @@
         <action
             android:id="@+id/action_splashFragment_to_adminDashboardFragment"
             app:destination="@id/adminDashboardFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -30,6 +32,8 @@
         <action
             android:id="@+id/action_splashFragment_to_clientDashboardFragment"
             app:destination="@id/clientDashboardFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -68,6 +72,8 @@
         <action
             android:id="@+id/action_loginFragment_to_adminDashboardFragment"
             app:destination="@id/adminDashboardFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -216,6 +222,26 @@
         android:name="com.gm3ya.gm3ya.features.associationsdetails.AssociationDetailForeignFragment"
         android:label="fragment_association_detail_foreign"
         tools:layout="@layout/fragment_association_detail_foreign" >
+        <argument
+            android:name="association"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
+        <action
+            android:id="@+id/action_associationDetailForeignFragment_to_joinAssociationFragment"
+            app:destination="@id/joinAssociationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/joinAssociationFragment"
+        android:name="com.gm3ya.gm3ya.features.joinassociation.JoinAssociationFragment"
+        android:label="fragment_join_association"
+        tools:layout="@layout/fragment_join_association" >
+        <argument
+            android:name="isChoosePlace"
+            android:defaultValue="false"
+            app:argType="boolean"/>
         <argument
             android:name="association"
             app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />

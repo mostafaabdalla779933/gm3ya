@@ -1,6 +1,7 @@
 package com.gm3ya.gm3ya.common.firebase
 
 import android.content.Context
+import android.media.MediaRouter.UserRouteInfo
 import android.net.Uri
 import android.util.Log
 import android.webkit.MimeTypeMap
@@ -28,6 +29,8 @@ object FirebaseHelp {
     const val ORDERS = "all_orders"
 
     const val CARDS = "cards"
+
+    var user:UserModel? = null
 
     fun getUserID() = auth.currentUser?.uid ?: ""
 

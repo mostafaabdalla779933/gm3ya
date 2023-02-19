@@ -2,8 +2,6 @@ package com.gm3ya.gm3ya.features.newassociation
 
 
 import android.app.DatePickerDialog
-import android.text.format.DateUtils
-import android.util.Log
 import android.view.Window
 import android.widget.DatePicker
 import androidx.lifecycle.ViewModelProvider
@@ -38,6 +36,9 @@ class NewAssociationFragment : BaseFragment<FragmentNewAssociationBinding, AnyVi
 
         binding.apply {
 
+            tb.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
             tvAssociationStartDate.setOnClickListener {
                 DateFragment(this@NewAssociationFragment).also {
                     it.dialog?.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
