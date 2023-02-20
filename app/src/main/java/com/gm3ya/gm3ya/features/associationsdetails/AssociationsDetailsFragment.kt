@@ -16,6 +16,7 @@ import java.util.*
 class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBinding, AnyViewModel>(){
     private val args: AssociationsDetailsFragmentArgs by navArgs()
 
+    private lateinit var adapter: DetailAssociationAdapter
 
     override fun initBinding() = FragmentAssociationsDetailsBinding.inflate(layoutInflater)
 
@@ -26,26 +27,27 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
 
 
     override fun onFragmentCreated() {
-
-
         setNavigationButton()
         setupView()
-
         binding.apply {
-            args.association.months?.forEach {
-                tabLayout.addTab(tabLayout.newTab().setId(1).setText(it?.date?.getMonth()))
+            args.association.months?.forEachIndexed { index, it ->
+                tabLayout.addTab(tabLayout.newTab().setId(index).setText(it?.date?.getMonth()))
             }
 
-            rvAssociations.adapter = args.association.months?.get(0)?.let {
+            args.association.months?.getOrNull(0)?.let {
                 it.paidMonths?.let { paidMonths ->
-                    DetailAssociationAdapter(paidMonths){
-                    }
+                    adapter = DetailAssociationAdapter(list = paidMonths, payNow = {
+                    }, sendWarning = {
+
+                    })
                 }
             }
 
+            rvAssociations.adapter = adapter
+
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                   showErrorMsg("${tab?.id} +  ${tab?.text}")
+                    adapter.list = args.association.months?.getOrNull(tab?.id ?: 0)?.paidMonths ?: emptyList()
                 }
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
                 override fun onTabReselected(tab: TabLayout.Tab?) {}

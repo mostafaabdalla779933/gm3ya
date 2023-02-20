@@ -146,3 +146,14 @@ fun String.getMonthAndYear(): String {
     val outputFormat = SimpleDateFormat("MMM yyyy", Locale.US)
     return outputFormat.format(inputFormat.parse(this))
 }
+
+fun String.getDayMonthAndYear(): String {
+    try {
+        val inputFormat = SimpleDateFormat("EEE MMM d HH:mm:ss 'GMT+02:00' yyyy", Locale.US)
+        val outputFormat = SimpleDateFormat("d MMM yyyy", Locale.US)
+        return outputFormat.format(inputFormat.parse(this))
+    }catch (e:Exception){
+        return ""
+    }
+
+}

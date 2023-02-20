@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:background="#F5F5F5"
             app:navigationIcon="@drawable/arrow_back"
-            app:title="Associations Name"
             app:titleCentered="true"
             app:titleTextColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"

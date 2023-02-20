@@ -202,7 +202,15 @@
         android:id="@+id/notificationFragment"
         android:name="com.gm3ya.gm3ya.features.notification.NotificationFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_requestToJoinFragment"
+            app:destination="@id/requestToJoinFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/newAssociationFragment"
         android:name="com.gm3ya.gm3ya.features.newassociation.NewAssociationFragment"
@@ -245,5 +253,14 @@
         <argument
             android:name="association"
             app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestToJoinFragment"
+        android:name="com.gm3ya.gm3ya.features.userprofile.RequestToJoinFragment"
+        android:label="fragment_request_to_join"
+        tools:layout="@layout/fragment_request_to_join" >
+        <argument
+            android:name="notification"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.NotificationModel" />
     </fragment>
 </navigation>

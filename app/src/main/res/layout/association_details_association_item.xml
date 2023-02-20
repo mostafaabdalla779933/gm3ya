@@ -12,19 +12,21 @@
 
     <TextView
         android:id="@+id/tv_user_association_number"
-        android:layout_width="29dp"
+        android:layout_width="0dp"
         android:layout_height="29dp"
+        app:layout_constraintDimensionRatio="1"
         android:layout_marginStart="10dp"
         android:layout_marginTop="17dp"
         android:layout_marginBottom="14dp"
-        tools:text="1"
+        tools:text="10"
+        android:padding="4dp"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="60sp"
+        android:autoSizeMinTextSize="1sp"
         android:textAlignment="center"
         android:gravity="center"
         android:textColor="@color/white"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
         android:textSize="15sp"
         android:background="@drawable/association_details_association_item_number"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,21 +71,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:drawableEndCompat="@drawable/ic_paid" />
 
-    <TextView
-        android:id="@+id/tv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="13dp"
-        android:text="04 Jan 2023"
-        android:visibility="gone"
-        android:textSize="11sp"
-        tools:visibility="visible"
-        android:textColor="#BEBEBE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_paid_state"/>
 
     <TextView
         android:id="@+id/tv_send_warning"
@@ -99,8 +86,36 @@
         android:text="Send warning"
         android:background="@drawable/association_details_association_item_tv_not_paid"
         android:textSize="12sp"
+        tools:visibility="visible"
         android:textColor="#003233"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_paid_state" />
+
+
+
+    <TextView
+        android:id="@+id/tvPayNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="6dp"
+        android:paddingStart="5dp"
+        android:textAlignment="center"
+        android:paddingEnd="4dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="3dp"
+        android:text="Pay now"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:background="@drawable/bac"
+        android:textSize="12sp"
+        android:drawablePadding="10dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_paid_state" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

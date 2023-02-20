@@ -23,7 +23,7 @@ object FirebaseHelp {
     const val USERS = "all_users"
 
     const val PRODUCTS  = "all_products"
-
+    const val NOTIFICATION = "NOTIFICATION"
     const val ASSOCIATION  = "ASSOCIATION"
 
     const val ORDERS = "all_orders"
@@ -319,6 +319,19 @@ object FirebaseHelp {
         }.addOnFailureListener { e ->
             onFailure(e.localizedMessage ?: "something wrong")
         }
+    }
+
+    inline fun <reified T> deleteObject(
+        collection: String, document: String,
+        crossinline onSuccess: () -> Unit,
+        crossinline onFailure: (String) -> Unit
+    ) {
+        fireStore.collection(collection).document(document).delete()
+            .addOnSuccessListener {
+                onSuccess()
+            }.addOnFailureListener { e ->
+                onFailure(e.localizedMessage ?: "something wrong")
+            }
     }
 
 }

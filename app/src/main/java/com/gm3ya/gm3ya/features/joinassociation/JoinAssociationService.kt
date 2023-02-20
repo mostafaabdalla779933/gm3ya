@@ -13,14 +13,19 @@ import androidx.core.app.NotificationCompat
 import com.buildingmaterials.buildingmaterials.common.showMessage
 import com.gm3ya.gm3ya.R
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
+import com.gm3ya.gm3ya.common.firebase.data.AssociationModel
+import com.gm3ya.gm3ya.common.firebase.data.NotificationModel
+import com.gm3ya.gm3ya.common.firebase.data.NotificationType
 import com.gm3ya.gm3ya.common.firebase.data.UserModel
 import com.google.firebase.firestore.SetOptions
+import java.text.SimpleDateFormat
 
 class JoinAssociationService : JobIntentService() {
 
     var isFinished = false
     var isFailed = false
     var userModel:UserModel? = null
+    var association:AssociationModel?= null
     var isChoosePlace = false
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -35,6 +40,7 @@ class JoinAssociationService : JobIntentService() {
 
     private fun upload(intent: Intent?){
         userModel = intent?.extras?.getParcelable<UserModel>(FirebaseHelp.USERS)
+        association = intent?.extras?.getParcelable<AssociationModel>(FirebaseHelp.ASSOCIATION)
         isChoosePlace = intent?.extras?.getBoolean(JoinAssociationFragment.isChoosePlace) ?: false
         userModel?.profileUri?.let{ uploadImage(it) }
     }
@@ -52,18 +58,46 @@ class JoinAssociationService : JobIntentService() {
     private fun addUser(){
 
         userModel?.let{ userModel ->
+            userModel.profileUri = null
             FirebaseHelp
                 .fireStore.collection(FirebaseHelp.USERS)
                 .document(userModel.userId ?: "").set(userModel, SetOptions.merge())
                 .addOnSuccessListener {
                     isFinished = true
-                    FirebaseHelp.logout()
+                    addNotification(userModel)
                     showMessage("data sent")
                 }.addOnFailureListener { e ->
                     isFailed = true
                     showMessage("failed  ${e.localizedMessage}")
                 }
+
+
         }
+
+
+    }
+
+    fun addNotification(userModel: UserModel){
+        val notificationModel = NotificationModel(
+            title = "${userModel.userName} want to join Association",
+            type = NotificationType.RequestAssociation.value,
+            from = userModel,
+            fromId = userModel.userId,
+            hash = System.currentTimeMillis(),
+            date = SimpleDateFormat("dd MM yyyy").format(System.currentTimeMillis()),
+            toUserId = association?.creatorId,
+            isChoosePlace = isChoosePlace,
+            associationModel = association,
+            place = userModel.place
+        )
+
+        FirebaseHelp.addObject<NotificationModel>(
+            notificationModel,
+            FirebaseHelp.NOTIFICATION,
+            notificationModel.hash.toString(),
+            {},
+            {})
+
     }
 
 

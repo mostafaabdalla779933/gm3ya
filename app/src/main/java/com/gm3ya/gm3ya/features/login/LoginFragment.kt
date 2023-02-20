@@ -68,10 +68,16 @@ class LoginFragment  : BaseFragment<FragmentLoginBinding, AnyViewModel>() {
 
     private fun checkUser(){
         FirebaseHelp.getObject<UserModel>(FirebaseHelp.USERS,FirebaseHelp.getUserID(),{
-            if(it.isAdmin == true){
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToAdminDashboardFragment())
-            }else{
-                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToClientDashboardFragment())
+            if(it.isDeleted == true){
+                FirebaseHelp.logout()
+                showErrorMsg("account deleted")
+            }else {
+                FirebaseHelp.user = it
+                if (it.isAdmin == true) {
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToAdminDashboardFragment())
+                } else {
+                    findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToClientDashboardFragment())
+                }
             }
         },{
             showErrorMsg(it)

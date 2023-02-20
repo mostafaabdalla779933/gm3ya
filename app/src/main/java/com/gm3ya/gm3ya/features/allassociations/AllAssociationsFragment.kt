@@ -16,7 +16,7 @@ class AllAssociationsFragment : BaseFragment<FragmentAllAssociationsBinding, Any
 
     private val adapter: AllAssociationsAdapter by lazy {
         AllAssociationsAdapter { association ->
-            findNavController().navigate(AllAssociationsFragmentDirections.actionAllAssociationsFragmentToAssociationDetailForeignFragment(association))
+            findNavController().navigate(AllAssociationsFragmentDirections.actionAllAssociationsFragmentToAssociationsDetailsFragment(association))
         }
     }
 

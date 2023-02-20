@@ -95,9 +95,10 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
             }
             layoutChooseBirthDate.setOnClickListener {
                 DateFragment(this@JoinAssociationFragment).also {
-                    it.dialog?.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+                    it.dialog?.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY)
                 }.show(parentFragmentManager, "date")
             }
+            tb.title = args.association.name
         }
 
     }
@@ -197,9 +198,9 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
             intent.putExtra(isChoosePlace,args.isChoosePlace)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                requireContext().startForegroundService(intent);
+                requireContext().startForegroundService(intent)
             } else {
-                requireContext().startService(intent);
+                requireContext().startService(intent)
             }
             requireContext().showMessage("uploading your data")
 
