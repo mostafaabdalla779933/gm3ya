@@ -2,45 +2,44 @@ package com.gm3ya.gm3ya.features.clientdashboard
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.gm3ya.gm3ya.common.firebase.data.AssociationModel
+import com.gm3ya.gm3ya.common.firebase.data.AssociationState
 import com.gm3ya.gm3ya.databinding.ItemAssociationBinding
 
 
-class AssociationAdapter(val list:List<String>,val onClick:(String)->Unit): RecyclerView.Adapter<AssociationAdapter.ViewHolder>() {
+class AssociationAdapter(val onClick:(AssociationModel)->Unit): ListAdapter<AssociationModel, AssociationAdapter.ViewHolder>(
+    UserDiffCallback()){
 
-    inner class ViewHolder(val rowView: ItemAssociationBinding): RecyclerView.ViewHolder(rowView.root){
-        fun onBind(str:String,position: Int){
+    inner class ViewHolder(private val rowView: ItemAssociationBinding): RecyclerView.ViewHolder(rowView.root){
+        fun onBind(association: AssociationModel, position: Int){
             rowView.apply {
 
-                tvName.text= str
+                tvName.text= association.name
+                tvNumber.text = "${association.users?.count()}/${association.maxSize} Members"
+                tvAmount.text = association.totalAmount
+                tvState.text = association.state
                 root.setOnClickListener {
-                    onClick(str)
+                    onClick(association)
                 }
 
-                when(position){
-                    0->{
+                when(association.state){
+                    AssociationState.Ongoing.value,AssociationState.Available.value->{
                         tvState.isActivated = true
                         tvState.isSelected = true
                     }
-                    1 ->{
+                    AssociationState.Completed.value ->{
                         tvState.isActivated = false
                         tvState.isSelected = false
                     }
-                    2 ->{
-                        tvState.isActivated = true
-                        tvState.isSelected = false
-                    }
-                    3->{
-                        tvState.isActivated = true
-                        tvState.isSelected = false
-                    }
-                    else ->{
+                    AssociationState.Finished.value->{
                         tvState.isActivated = true
                         tvState.isSelected = false
                     }
                 }
             }
-
         }
     }
 
@@ -48,13 +47,17 @@ class AssociationAdapter(val list:List<String>,val onClick:(String)->Unit): Recy
         return ViewHolder(ItemAssociationBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
-    override fun getItemCount(): Int =list.size
-
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(list[position],position)
-
+        holder.onBind(getItem(position),position)
     }
 
+    class UserDiffCallback : DiffUtil.ItemCallback<AssociationModel>() {
+        override fun areItemsTheSame(oldItem: AssociationModel, newItem: AssociationModel): Boolean {
+            return oldItem.hashed == newItem.hashed
+        }
 
+        override fun areContentsTheSame(oldItem: AssociationModel, newItem: AssociationModel): Boolean {
+            return oldItem == newItem
+        }
+    }
 }

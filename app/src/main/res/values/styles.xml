@@ -87,4 +87,14 @@
         <item name="android:background">@drawable/bg_text_view</item>
     </style>
 
+
+    <style name="DialogStyle" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
 </resources>

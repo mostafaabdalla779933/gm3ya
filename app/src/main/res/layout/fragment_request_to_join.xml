@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.userprofile.UserProfileFragment">
+    tools:context=".features.userprofile.RequestToJoinFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -19,8 +18,9 @@
             android:layout_height="wrap_content"
             android:background="#F5F5F5"
             app:navigationIcon="@drawable/arrow_back"
+            app:title="Join Association"
             app:titleCentered="true"
-            app:titleTextColor="#000000"/>
+            app:titleTextColor="#000000" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_user_picture"
@@ -29,6 +29,7 @@
             app:shapeAppearance="@style/circleImageView"
             android:layout_marginTop="35dp"
             android:background="#0055FF" />
+
         <TextView
             android:id="@+id/tv_username"
             android:layout_width="wrap_content"
@@ -38,6 +39,44 @@
             android:textSize="20sp"
             tools:text="Username" />
 
+        <TextView
+            android:id="@+id/tv_association_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/admin_dashboard_card_background"
+            android:paddingStart="13dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="8dp"
+            tools:text="Association name"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:text="Number in association"
+            android:textColor="#BEBEBE"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_user_number"
+            style="@style/TextView.profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="20dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="11dp"
+            android:text="5" />
 
         <TextView
             android:id="@+id/tv_user_id"
@@ -46,9 +85,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="ID number"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="ID number" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_id_number"
@@ -59,8 +98,8 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
             tools:text="×××××××××××××××" />
 
@@ -71,9 +110,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="Birth date"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="Birth date" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_birth_date"
@@ -84,11 +123,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:textSize="15sp"
-            android:text="14 Nov 1982" />
+            android:text="14 Nov 1982"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_nationality"
@@ -97,9 +136,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="Nationality"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="Nationality" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_nationality"
@@ -110,11 +149,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:textSize="15sp"
-            android:text="Egyptian" />
+            android:text="Egyptian"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_address"
@@ -123,9 +162,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="Address"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="Address" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_address"
@@ -136,11 +175,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:textSize="15sp"
-            android:text="City …, St 15.. ," />
+            android:text="City …, St 15.. ,"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_home_address"
@@ -149,9 +188,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="Home address"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="Home address" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_home_address"
@@ -162,11 +201,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:textSize="15sp"
-            android:text="City …, St 15.. ," />
+            android:text="City …, St 15.. ,"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_phone_number"
@@ -175,9 +214,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="Phone number"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="Phone number" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_phone_number"
@@ -188,11 +227,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:textSize="15sp"
-            android:text="×××××××××" />
+            android:text="×××××××××"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_email"
@@ -201,9 +240,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="Email"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="Email" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_email"
@@ -214,8 +253,8 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
             android:textSize="15sp"
             tools:text="username@email.com" />
@@ -227,9 +266,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="ID front"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="ID front" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_id_front"
@@ -240,11 +279,11 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:textSize="15sp"
-            android:text="id front 12316.png" />
+            android:text="id front 12316.png"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_id_back"
@@ -253,9 +292,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text="ID back"
             android:textColor="#BEBEBE"
-            android:textSize="11sp"
-            android:text="ID back" />
+            android:textSize="11sp" />
 
         <TextView
             android:id="@+id/tv_user_id_back"
@@ -266,29 +305,49 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             android:paddingTop="12dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:textSize="15sp"
-            android:text="id back 12316.png" />
+            android:text="id back 12316.png"
+            android:textSize="15sp" />
 
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDelete"
-            style="@style/refuseButton"
-            android:layout_weight="1"
-            android:layout_marginTop="25dp"
-            android:layout_width="wrap_content"
-            android:layout_marginStart="13dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="12.5dp"
-            android:text="Delete account"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:cornerRadius="5dp" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_accept"
+                style="@style/myMaterialButton35BCCB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingVertical="12.5dp"
+                android:text="Accept"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:cornerRadius="5dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_refuse"
+                style="@style/refuseButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_weight="1"
+                android:paddingVertical="12.5dp"
+                android:text="Refuse"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:cornerRadius="5dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

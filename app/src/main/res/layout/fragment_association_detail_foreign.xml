@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".features.associationsdetails.AssociationDetailForeignFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/arrow_back"
+        app:title="Associations Name"
+        app:titleCentered="true"
+        app:titleTextColor="#000000" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/association_cards"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/card_total_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/associations_details_total_card"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_association_total_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="1000" />
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="10dp"
+                android:text="Total"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/card_months"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/associations_details_months_card"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_association_months_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="10" />
+
+            <TextView
+                android:id="@+id/tv_months"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="10dp"
+                android:text="Months"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/card_members"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/all_associations_item_tv_state_available_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_association_members_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="6/10" />
+
+            <TextView
+                android:id="@+id/tv_members"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="10dp"
+                android:text="Members"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/card_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/associations_details_amount_card"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_association_individual_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="100" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="10dp"
+                android:text="Amount"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_association_dates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/association_cards">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_association_start_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/all_associations_item_cardview_background"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_first_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="First month"
+                android:textColor="#707070"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_association_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:textColor="#35BCCB"
+                android:textSize="13sp"
+                tools:text="Jan 2023" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_association_end_dates"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/all_associations_item_cardview_background"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_end_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="Last month"
+                android:textColor="#707070"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_association_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:textColor="#35BCCB"
+                android:textSize="13sp"
+                tools:text="Oct 2023" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_associations"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/btnInstantJoin"
+        app:layout_constraintTop_toBottomOf="@+id/layout_association_dates"
+        tools:listitem="@layout/item_association_member_for_forgein" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instant Join"
+        android:id="@+id/btnInstantJoin"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="40dp"
+        android:padding="13dp"
+        android:textSize="17sp"
+        style="@style/myMaterialButton35BCCB"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="false"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Place"
+        android:textSize="17sp"
+        android:padding="13dp"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/btnChoosePlace"
+        android:layout_marginEnd="30dp"
+        style="@style/myMaterialButton003233"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAllCaps="false"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,12 +13,11 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_join_associations_fragment"
+            android:id="@+id/tb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F5F5F5"
             app:navigationIcon="@drawable/arrow_back"
-            app:title="Associations Name"
             app:titleCentered="true"
             app:titleTextColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,22 +34,19 @@
             android:textSize="18sp"
             android:text="Joining the association"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_join_associations_fragment" />
+            app:layout_constraintTop_toBottomOf="@id/tb" />
 
-        <TextView
-            android:id="@+id/tv_choose_number"
-            style="@style/TextView.view"
-            android:layout_width="0dp"
+
+        <Spinner
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:id="@+id/spinner"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:padding="14dp"
-            android:text="Choose your number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_join"
             app:layout_constraintTop_toBottomOf="@id/tv_join"
-            android:drawablePadding="17dp"
-            app:drawableEndCompat="@drawable/arrow_drop_menu" />
+            android:popupBackground="@drawable/bg_text_view"
+            android:background="@drawable/bg_text_view" />
+
 
         <TextView
             android:id="@+id/tv_picture"
@@ -59,27 +55,27 @@
             android:layout_marginTop="25dp"
             android:textColor="#000000"
             android:textSize="14sp"
+            android:layout_marginStart="16dp"
             android:text="Your Picture:"
-            app:layout_constraintStart_toStartOf="@id/tv_choose_number"
-            app:layout_constraintTop_toBottomOf="@id/tv_choose_number" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/layout_image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_user_picture"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/pick_picture_bg"
-            app:layout_constraintStart_toStartOf="@id/tv_picture"
-            app:layout_constraintTop_toBottomOf="@id/tv_picture">
+            android:background="#6135BCCB"
+            android:scaleType="centerInside"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_picture"
+            android:src="@drawable/ic_circular_add"
+            app:shapeAppearance="@style/RoundedImageView.5p" />
 
-            <ImageView
-                android:id="@+id/iv_user_picture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_circular_add"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
         <EditText
             android:id="@+id/et_full_name"
@@ -87,11 +83,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:inputType="textPersonName"
             android:hint="Full name"
             android:padding="14dp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_choose_number"
-            app:layout_constraintStart_toStartOf="@id/layout_image"
-            app:layout_constraintTop_toBottomOf="@id/layout_image" />
+            app:layout_constraintEnd_toEndOf="@+id/spinner"
+            app:layout_constraintStart_toStartOf="@id/iv_user_picture"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_picture" />
 
         <EditText
             android:id="@+id/et_id_number"
@@ -100,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="ID number"
+            android:inputType="number"
             android:padding="14dp"
             app:layout_constraintEnd_toEndOf="@+id/et_full_name"
             app:layout_constraintStart_toStartOf="@id/et_full_name"
@@ -127,7 +125,7 @@
             app:layout_constraintStart_toStartOf="@id/tv_birth_date"
             app:layout_constraintTop_toBottomOf="@id/tv_birth_date">
 
-            <EditText
+            <TextView
                 android:id="@+id/et_choose_day"
                 style="@style/EditText.join"
                 android:layout_width="0dp"
@@ -137,7 +135,7 @@
                 android:layout_weight="1"
                 android:padding="14dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_choose_month"
                 style="@style/EditText.join"
                 android:layout_width="0dp"
@@ -149,7 +147,7 @@
                 android:layout_weight="1"
                 android:padding="14dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/et_choose_year"
                 style="@style/EditText.join"
                 android:layout_width="0dp"
@@ -160,19 +158,18 @@
                 android:padding="14dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <TextView
-            android:id="@+id/tv_choose_nationality"
-            style="@style/TextView.view"
+        <EditText
+            android:id="@+id/etNationality"
+            style="@style/EditText.join"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:padding="14dp"
-            android:text="Nationality"
+            android:inputType="text"
+            android:hint="Nationality"
             app:layout_constraintEnd_toEndOf="@id/layout_choose_birth_date"
             app:layout_constraintStart_toStartOf="@id/layout_choose_birth_date"
-            app:layout_constraintTop_toBottomOf="@id/layout_choose_birth_date"
-            android:drawablePadding="17dp"
-            app:drawableEndCompat="@drawable/arrow_drop_menu" />
+            app:layout_constraintTop_toBottomOf="@id/layout_choose_birth_date" />
 
         <TextView
             android:id="@+id/tv_address"
@@ -182,8 +179,8 @@
             android:textColor="#000000"
             android:textSize="14sp"
             android:text="Address:"
-            app:layout_constraintStart_toStartOf="@id/tv_choose_nationality"
-            app:layout_constraintTop_toBottomOf="@id/tv_choose_nationality" />
+            app:layout_constraintStart_toStartOf="@id/etNationality"
+            app:layout_constraintTop_toBottomOf="@id/etNationality" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/layout_address_first_part"
@@ -192,7 +189,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:weightSum="2"
-            app:layout_constraintEnd_toEndOf="@+id/tv_choose_nationality"
+            app:layout_constraintEnd_toEndOf="@+id/etNationality"
             app:layout_constraintStart_toStartOf="@id/tv_address"
             app:layout_constraintTop_toBottomOf="@id/tv_address">
 
@@ -202,6 +199,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Governorate"
+            android:inputType="text"
             android:textAlignment="center"
             android:layout_weight="1"
             android:padding="14dp" />
@@ -212,6 +210,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="City"
+            android:inputType="text"
             android:layout_marginStart="9dp"
             android:layout_marginEnd="9dp"
             android:textAlignment="center"
@@ -236,6 +235,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Block"
+                android:inputType="text"
                 android:textAlignment="center"
                 android:layout_weight="1"
                 android:padding="14dp" />
@@ -246,6 +246,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Street"
+                android:inputType="text"
                 android:layout_marginStart="9dp"
                 android:layout_marginEnd="9dp"
                 android:textAlignment="center"
@@ -281,6 +282,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Building"
+                android:inputType="text"
                 android:textAlignment="center"
                 android:layout_weight="1"
                 android:padding="14dp" />
@@ -291,6 +293,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Role"
+                android:inputType="text"
                 android:layout_marginStart="9dp"
                 android:layout_marginEnd="9dp"
                 android:textAlignment="center"
@@ -313,6 +316,7 @@
                 android:id="@+id/et_choose_apartment"
                 style="@style/EditText.join"
                 android:layout_width="0dp"
+                android:inputType="text"
                 android:layout_height="wrap_content"
                 android:hint="Apartment number"
                 android:textAlignment="center"
@@ -338,8 +342,10 @@
             style="@style/EditText.join"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginTop="10dp"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             android:padding="14dp"
             app:layout_constraintEnd_toEndOf="@+id/et_phone_number"
             app:layout_constraintStart_toStartOf="@id/et_phone_number"
@@ -347,8 +353,9 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/layout_id_pictures"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
             android:weightSum="2"
@@ -370,21 +377,18 @@
                     android:textSize="14sp"
                     android:text="Upload ID front:" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/layout_id_front"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_user_id_front"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:background="@drawable/pick_picture_bg">
+                    android:background="#6135BCCB"
+                    android:scaleType="centerInside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_picture"
+                    android:src="@drawable/ic_circular_add"
+                    app:shapeAppearance="@style/RoundedImageView.5p" />
 
-                    <ImageView
-                        android:id="@+id/iv_user_id_front"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_circular_add"/>
-                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -401,21 +405,17 @@
                     android:textSize="14sp"
                     android:text="Upload ID back:" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/layout_id_back"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_user_id_back"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:background="@drawable/pick_picture_bg">
-
-                    <ImageView
-                        android:id="@+id/iv_user_id_back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_circular_add"/>
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:background="#6135BCCB"
+                    android:scaleType="centerInside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_picture"
+                    android:src="@drawable/ic_circular_add"
+                    app:shapeAppearance="@style/RoundedImageView.5p" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -452,6 +452,7 @@
             android:layout_marginTop="20dp"
             android:textColor="#000000"
             android:textSize="14sp"
+            android:visibility="gone"
             android:text="Scan fingerprint:"
             app:layout_constraintStart_toStartOf="@id/et_confirm_password"
             app:layout_constraintTop_toBottomOf="@id/et_confirm_password" />

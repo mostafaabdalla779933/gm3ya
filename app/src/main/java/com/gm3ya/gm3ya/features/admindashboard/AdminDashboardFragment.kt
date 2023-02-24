@@ -24,7 +24,11 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
     }
 
     private fun setNavigationButtons() {
-        binding.ivAdd.isEnabled = false
+        binding.ivLogout.setOnClickListener {
+            FirebaseHelp.logout()
+            requireActivity().finish()
+            requireActivity().startActivity(requireActivity().intent)
+        }
 
         binding.accountsCard.setOnClickListener {
             findNavController().navigate(AdminDashboardFragmentDirections.actionAdminDashboardFragmentToAllAccountsFragment())

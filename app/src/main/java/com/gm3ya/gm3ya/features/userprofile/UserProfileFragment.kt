@@ -1,18 +1,15 @@
 package com.gm3ya.gm3ya.features.userprofile
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.gm3ya.gm3ya.R
+import com.buildingmaterials.buildingmaterials.common.getDayMonthAndYear
+import com.bumptech.glide.Glide
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
+import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
 import com.gm3ya.gm3ya.common.firebase.data.UserModel
-import com.gm3ya.gm3ya.databinding.FragmentAllAccountsBinding
 import com.gm3ya.gm3ya.databinding.FragmentUserProfileBinding
 
 class UserProfileFragment : BaseFragment<FragmentUserProfileBinding, AnyViewModel>(){
@@ -33,9 +30,32 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding, AnyViewMode
 
     private fun setupView() {
         binding.apply {
+
+            Glide.with(requireContext())
+                .load(args.user.profileUrl)
+                .into(ivUserPicture)
             tvUsername.text = user?.userName
-            tvUserIdNumber.text = user?.userId
+            tvUserIdNumber.text = user?.hash
             tvUserEmail.text = user?.email
+
+            tvUserBirthDate.text = user?.birthDate?.getDayMonthAndYear()
+            tvUserNationality.text =  user?.nationality
+            //tvAddress.text =
+            tvUserPhoneNumber.text = user?.phone
+
+            btnDelete.setOnClickListener {
+                val user = args.user
+                user.isDeleted = true
+                showLoading()
+                FirebaseHelp.addObject<UserModel>(user,FirebaseHelp.USERS,user.userId ?: "",{
+                    hideLoading()
+                    findNavController().popBackStack()
+                },{
+                    hideLoading()
+                    showErrorMsg(it)
+
+                })
+            }
         }
     }
 

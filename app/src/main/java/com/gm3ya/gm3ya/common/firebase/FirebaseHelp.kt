@@ -1,6 +1,7 @@
 package com.gm3ya.gm3ya.common.firebase
 
 import android.content.Context
+import android.media.MediaRouter.UserRouteInfo
 import android.net.Uri
 import android.util.Log
 import android.webkit.MimeTypeMap
@@ -22,12 +23,14 @@ object FirebaseHelp {
     const val USERS = "all_users"
 
     const val PRODUCTS  = "all_products"
-
+    const val NOTIFICATION = "NOTIFICATION"
     const val ASSOCIATION  = "ASSOCIATION"
 
     const val ORDERS = "all_orders"
 
     const val CARDS = "cards"
+
+    var user:UserModel? = null
 
     fun getUserID() = auth.currentUser?.uid ?: ""
 
@@ -316,6 +319,19 @@ object FirebaseHelp {
         }.addOnFailureListener { e ->
             onFailure(e.localizedMessage ?: "something wrong")
         }
+    }
+
+    inline fun <reified T> deleteObject(
+        collection: String, document: String,
+        crossinline onSuccess: () -> Unit,
+        crossinline onFailure: (String) -> Unit
+    ) {
+        fireStore.collection(collection).document(document).delete()
+            .addOnSuccessListener {
+                onSuccess()
+            }.addOnFailureListener { e ->
+                onFailure(e.localizedMessage ?: "something wrong")
+            }
     }
 
 }

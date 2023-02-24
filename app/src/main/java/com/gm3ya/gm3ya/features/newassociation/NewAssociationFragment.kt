@@ -2,8 +2,6 @@ package com.gm3ya.gm3ya.features.newassociation
 
 
 import android.app.DatePickerDialog
-import android.text.format.DateUtils
-import android.util.Log
 import android.view.Window
 import android.widget.DatePicker
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +12,7 @@ import com.buildingmaterials.buildingmaterials.common.isStringEmpty
 import com.buildingmaterials.buildingmaterials.common.showMessage
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
-import com.gm3ya.gm3ya.common.base.DateFragment
+import com.gm3ya.gm3ya.common.base.DateFragmentTo
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
 import com.gm3ya.gm3ya.common.firebase.data.AssociationModel
 import com.gm3ya.gm3ya.common.firebase.data.AssociationState
@@ -38,8 +36,11 @@ class NewAssociationFragment : BaseFragment<FragmentNewAssociationBinding, AnyVi
 
         binding.apply {
 
+            tb.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
             tvAssociationStartDate.setOnClickListener {
-                DateFragment(this@NewAssociationFragment).also {
+                DateFragmentTo(this@NewAssociationFragment).also {
                     it.dialog?.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
                 }.show(parentFragmentManager, "date")
             }
@@ -84,7 +85,7 @@ class NewAssociationFragment : BaseFragment<FragmentNewAssociationBinding, AnyVi
             val association = AssociationModel(
                 name = etAssociationName.getString(),
                 creatorId = FirebaseHelp.getUserID(),
-                users = emptyList(),
+                users = mutableListOf(),
                 startDate = binding.tvAssociationStartDate.text.toString(),
                 hashed = System.currentTimeMillis().toString(),
                 maxSize = etAssociationMembers.getInt(),
@@ -93,9 +94,9 @@ class NewAssociationFragment : BaseFragment<FragmentNewAssociationBinding, AnyVi
                 months = (0 until etAssociationMonthsNumber.getInt()).map { e ->
                     selectedCalendar?.let {
                         it.add(Calendar.MONTH, if(e == 0)0 else 1).toString()
-                        MonthModel(Date(it.timeInMillis).toString())
+                        MonthModel(Date(it.timeInMillis).toString(), mutableListOf())
                     }
-                },
+                }.toMutableList(),
                 endDate = Date(selectedCalendar?.timeInMillis ?: 0L).toString(),
                 totalAmount = (etAssociationPayment.getInt() * etAssociationMonthsNumber.getInt()).toString(),
             )

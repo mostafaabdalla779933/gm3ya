@@ -40,6 +40,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="12dp"
         tools:text="Username"
+        tools:visibility="gone"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/tv_user_association_number"
@@ -53,69 +54,24 @@
         tools:text="ID:26315526142312"
         android:textColor="#BEBEBE"
         android:textSize="12sp"
+        tools:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_username"
         app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
-    <TextView
-        android:id="@+id/tv_paid_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="12dp"
-        tools:text="Not paid"
-        android:textSize="13sp"
-        android:drawablePadding="2dp"
-        android:textColor="@color/paid_text_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:drawableEndCompat="@drawable/ic_paid" />
 
 
-    <TextView
-        android:id="@+id/tv_send_warning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="6dp"
-        android:paddingStart="5dp"
-        android:paddingEnd="4dp"
-        android:paddingTop="1dp"
-        android:paddingBottom="3dp"
-        android:text="Send warning"
-        android:background="@drawable/association_details_association_item_tv_not_paid"
-        android:textSize="12sp"
-        tools:visibility="visible"
-        android:textColor="#003233"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_paid_state" />
-
-
-
-    <TextView
-        android:id="@+id/tvPayNow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="6dp"
-        android:paddingStart="5dp"
-        android:textAlignment="center"
-        android:paddingEnd="4dp"
-        android:paddingTop="1dp"
-        android:paddingBottom="3dp"
-        android:text="Pay now"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:background="@drawable/bac"
-        android:textSize="12sp"
-        android:drawablePadding="10dp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_paid_state" />
-
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Waiting member"
+       android:id="@+id/tvWaiting"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:textSize="12sp"
+       android:layout_marginStart="10dp"
+       android:textColor="#BEBEBE"
+       app:layout_constraintStart_toEndOf="@id/tv_user_association_number"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,35 @@ class DateFragment(private var listener: DatePickerDialog.OnDateSetListener) : D
                 requireContext(),
                 listener, get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH)
             ).let { datePickerDialog ->
-                datePickerDialog.datePicker.minDate = System.currentTimeMillis() + 1000
+                datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+                datePickerDialog.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY)
+                return datePickerDialog
+            }
+        }
+    }
+
+}
+
+
+class DateFragmentTo(private var listener: DatePickerDialog.OnDateSetListener) : DialogFragment() {
+
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        this.dialog?.window?.apply {
+            setBackgroundDrawable(InsetDrawable(ColorDrawable(Color.TRANSPARENT), 40))
+            setLayout(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+
+        Calendar.getInstance().apply {
+            DatePickerDialog(
+                requireContext(),
+                listener, get(Calendar.YEAR), get(Calendar.MONTH), get(Calendar.DAY_OF_MONTH)
+            ).let { datePickerDialog ->
+                datePickerDialog.datePicker.minDate = System.currentTimeMillis() + 10000
                 datePickerDialog.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY)
                 return datePickerDialog
             }

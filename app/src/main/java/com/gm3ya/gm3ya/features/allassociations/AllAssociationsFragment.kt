@@ -9,9 +9,7 @@ import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
 import com.gm3ya.gm3ya.common.firebase.data.AssociationModel
-import com.gm3ya.gm3ya.common.firebase.data.UserModel
 import com.gm3ya.gm3ya.databinding.FragmentAllAssociationsBinding
-import com.gm3ya.gm3ya.features.allaccounts.AllAccountsAdapter
 
 class AllAssociationsFragment : BaseFragment<FragmentAllAssociationsBinding, AnyViewModel>() {
     private var associations: List<AssociationModel>? = null
@@ -29,20 +27,20 @@ class AllAssociationsFragment : BaseFragment<FragmentAllAssociationsBinding, Any
     }
 
     override fun onFragmentCreated() {
-        setNavigationButton()
-        binding.rvAssociations.adapter = adapter
-        showLoading()
+        binding.apply {
+            rvAssociations.adapter = adapter
+            etSearchAssociationName.addTextChangedListener(textWatcher)
+            binding.tb.setNavigationOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
         getAllAssociations()
-        binding.etSearchAssociationName.addTextChangedListener(textWatcher)
     }
 
-    private fun setNavigationButton() {
-        binding.toolbarAllAssociationsFragment.setNavigationOnClickListener {
-            findNavController().popBackStack()
-        }
-    }
+
 
     private fun getAllAssociations() {
+        showLoading()
         FirebaseHelp.getAllObjects<AssociationModel>(FirebaseHelp.ASSOCIATION,{ allAssociations ->
             associations = allAssociations
             hideLoading()

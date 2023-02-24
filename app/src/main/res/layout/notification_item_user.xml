@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="Warning, you are late paying!"
+        tools:text="Warning, you are late paying!"
         android:textColor="#747474"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_notification_bell"
