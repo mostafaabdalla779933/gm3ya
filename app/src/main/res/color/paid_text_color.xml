@@ -2,5 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true" android:color="#E82532" />
     <item android:state_selected="false" android:color="#35BCCB"  />
-
 </selector>
