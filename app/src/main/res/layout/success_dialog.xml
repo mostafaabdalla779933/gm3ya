@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingVertical="50dp"
+    android:background="@drawable/custom_dialog_background"
+    android:paddingHorizontal="16dp">
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="27dp"
+        android:src="@drawable/ic_mark"
+        app:tint="#35BCCB" />
+
+
+    <TextView
+        android:id="@+id/tv_your_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="Successful payment"
+        android:textSize="20sp"
+        android:textColor="#003233" />
+
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        style="@style/myMaterialButton35BCCB"
+        android:text="OK"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/custom_dialog_button"
+        android:textSize="22sp"
+        android:padding="9dp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

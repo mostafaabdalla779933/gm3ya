@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
+import com.gm3ya.gm3ya.common.firebase.data.MonthModel
 import com.gm3ya.gm3ya.common.firebase.data.PaidMonthModel
 import com.gm3ya.gm3ya.databinding.AssociationDetailsAssociationItemBinding
 

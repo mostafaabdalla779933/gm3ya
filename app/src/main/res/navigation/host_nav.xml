@@ -197,6 +197,14 @@
         <argument
             android:name="association"
             app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
+        <action
+            android:id="@+id/action_associationsDetailsFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
     <fragment
         android:id="@+id/notificationFragment"
@@ -263,4 +271,44 @@
             android:name="notification"
             app:argType="com.gm3ya.gm3ya.common.firebase.data.NotificationModel" />
     </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.gm3ya.gm3ya.features.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="association"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
+        <argument
+            android:name="month"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.MonthModel" />
+        <action
+            android:id="@+id/action_paymentFragment_to_knetFragment"
+            app:destination="@id/knetFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/knetFragment"
+        android:name="com.gm3ya.gm3ya.features.payment.KnetFragment"
+        android:label="fragment_knet"
+        tools:layout="@layout/fragment_knet" >
+        <argument
+            android:name="association"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
+        <argument
+            android:name="month"
+            app:argType="com.gm3ya.gm3ya.common.firebase.data.MonthModel" />
+        <action
+            android:id="@+id/action_knetFragment_to_successDialog"
+            app:destination="@id/successDialog"
+            app:popUpTo="@id/clientDashboardFragment"/>
+    </fragment>
+    <dialog
+        android:id="@+id/successDialog"
+        android:name="com.gm3ya.gm3ya.features.payment.SuccessDialog"
+        android:label="SuccessDialog" />
 </navigation>

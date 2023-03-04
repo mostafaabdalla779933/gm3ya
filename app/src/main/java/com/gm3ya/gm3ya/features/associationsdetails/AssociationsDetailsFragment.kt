@@ -8,10 +8,13 @@ import com.buildingmaterials.buildingmaterials.common.getMonth
 import com.buildingmaterials.buildingmaterials.common.getMonthAndYear
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
+import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
+import com.gm3ya.gm3ya.common.firebase.data.NotificationModel
+import com.gm3ya.gm3ya.common.firebase.data.NotificationType
+import com.gm3ya.gm3ya.common.firebase.data.PaidMonthModel
 import com.gm3ya.gm3ya.databinding.FragmentAssociationsDetailsBinding
 import com.google.android.material.tabs.TabLayout
 import java.text.SimpleDateFormat
-import java.util.*
 
 class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBinding, AnyViewModel>(){
     private val args: AssociationsDetailsFragmentArgs by navArgs()
@@ -37,8 +40,16 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
             args.association.months?.getOrNull(0)?.let {
                 it.paidMonths?.let { paidMonths ->
                     adapter = DetailAssociationAdapter(list = paidMonths, payNow = {
+                        args.association.months?.get(tabLayout.selectedTabPosition)?.let { month ->
+                            findNavController().navigate(
+                                AssociationsDetailsFragmentDirections.actionAssociationsDetailsFragmentToPaymentFragment(
+                                    association = args.association,
+                                    month =month
+                                )
+                            )
+                        }
                     }, sendWarning = {
-
+                        sendWarning(it)
                     })
                 }
             }
@@ -48,11 +59,39 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     adapter.list = args.association.months?.getOrNull(tab?.id ?: 0)?.paidMonths ?: emptyList()
+                    adapter.notifyDataSetChanged()
                 }
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
                 override fun onTabReselected(tab: TabLayout.Tab?) {}
             })
         }
+    }
+
+
+    private fun sendWarning(paidMonthModel: PaidMonthModel){
+        val notificationModel = NotificationModel(
+            title = "Warning, you are late paying!",
+            type = NotificationType.WarningLate.value,
+            from = FirebaseHelp.user,
+            fromId = FirebaseHelp.user?.userId,
+            hash = System.currentTimeMillis(),
+            date = SimpleDateFormat("dd MM yyyy").format(System.currentTimeMillis()),
+            toUserId = paidMonthModel.userModel?.userId,
+            associationModel = args.association
+        )
+
+        showLoading()
+        FirebaseHelp.addObject<NotificationModel>(
+            notificationModel,
+            FirebaseHelp.NOTIFICATION,
+            notificationModel.hash.toString(),
+            {
+                hideLoading()
+            },
+            {
+                hideLoading()
+                showErrorMsg(it)
+            })
     }
 
     private fun setupView() {

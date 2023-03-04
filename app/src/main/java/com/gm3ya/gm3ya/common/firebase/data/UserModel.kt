@@ -67,7 +67,7 @@ data class MonthModel(
 @Parcelize
 data class PaidMonthModel(
     val userModel: UserModel?=null,
-    val state:Boolean?=false
+    var state:Boolean?=false
 ): Parcelable
 
 @Parcelize
@@ -86,7 +86,7 @@ data class NotificationModel(
 
 enum class NotificationType(val value: String) {
     RequestAssociation("RequestAssociation"),
-    NEW_IDEA("NEW_IDEA"),
+    WarningLate("WarningLate"),
     Duplicate_Idea("Duplicate_Idea"),
     Accept_Idea("Accept_Idea"),
     Refuse_Idea("Refuse_Idea"),
