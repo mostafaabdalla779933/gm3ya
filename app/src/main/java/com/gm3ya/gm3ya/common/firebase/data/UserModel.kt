@@ -86,7 +86,8 @@ data class NotificationModel(
     var from:UserModel?=null,
     val toUserId:String?=null,
     val associationModel: AssociationModel?=null,
-    val isChoosePlace:Boolean?=false,
+    @field:JvmField
+    val choosePlace:Boolean?=false,
     val place:Int?=null
 ) : Parcelable
 

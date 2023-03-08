@@ -46,6 +46,7 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
     var selectedDate : String? = null
 
     var user : UserModel? = null
+    var placeChoosen :Int = 1
 
     override fun initBinding()=FragmentJoinAssociationBinding.inflate(layoutInflater)
 
@@ -174,8 +175,16 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
                     showErrorMsg("invalid confirmation password")
                 }
                 else ->{
-                    val number  = if(args.isChoosePlace) spinner.selectedItem.toString().toIntOrNull() else ((args.association.users?.size ?: 0) + 1)
-                    findNavController().navigate(JoinAssociationFragmentDirections.actionJoinAssociationFragmentToCustomAlertDialog(number = number ?: 1))
+
+                    val size = args.association.maxSize ?: 0
+                    val list:MutableList<Int> = (1..size).toMutableList()
+                    args.association.users?.forEach { user ->
+                        user.place?.let {
+                            list.remove(it)
+                        }
+                    }
+                    placeChoosen  = if(args.isChoosePlace){ spinner.selectedItem.toString().toIntOrNull() ?: 1 }else {list.firstOrNull() ?: 1}
+                    findNavController().navigate(JoinAssociationFragmentDirections.actionJoinAssociationFragmentToCustomAlertDialog(number = placeChoosen))
                 }
             }
         }
@@ -200,7 +209,7 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
                 role = etChooseRole.getString()
                 apartment = etChooseApartment.getString()
                 phone = etPhoneNumber.getString()
-                place = spinner.selectedItem.toString().toIntOrNull()
+                place = placeChoosen
             }
             intent.putExtra(FirebaseHelp.USERS, user)
             intent.putExtra(FirebaseHelp.ASSOCIATION, args.association)

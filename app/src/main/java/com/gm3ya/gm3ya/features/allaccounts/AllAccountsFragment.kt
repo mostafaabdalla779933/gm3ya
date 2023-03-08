@@ -42,7 +42,7 @@ class AllAccountsFragment : BaseFragment<FragmentAllAccountsBinding, AnyViewMode
 
     private fun getAllAccounts() {
         FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS,{ allUsers ->
-            users = allUsers.filter { it.isAdmin == false }
+            users = allUsers.filter { it.isAdmin == false && it.isDeleted!= true }
             hideLoading()
             users?.let {
                 adapter.submitList(users)

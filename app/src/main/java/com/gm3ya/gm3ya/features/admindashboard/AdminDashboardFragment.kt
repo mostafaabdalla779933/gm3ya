@@ -45,7 +45,7 @@ class AdminDashboardFragment : BaseFragment<FragmentAdminDashboardBinding, AnyVi
 
     private fun getAllAccounts() {
         FirebaseHelp.getAllObjects<UserModel>(FirebaseHelp.USERS,{ allUsers ->
-            val users = allUsers.filter { it.isAdmin == false }
+            val users = allUsers.filter { it.isAdmin == false && it.isDeleted!= true }
             binding.tvAccountsNumber.text = users.count().toString()
         },{
             hideLoading()

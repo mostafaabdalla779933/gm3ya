@@ -75,7 +75,7 @@ class AssociationsDetailsFragment : BaseFragment<FragmentAssociationsDetailsBind
             from = FirebaseHelp.user,
             fromId = FirebaseHelp.user?.userId,
             hash = System.currentTimeMillis(),
-            date = SimpleDateFormat("dd MM yyyy").format(System.currentTimeMillis()),
+            date = SimpleDateFormat("dd MMM yyyy").format(System.currentTimeMillis()),
             toUserId = paidMonthModel.userModel?.userId,
             associationModel = args.association
         )

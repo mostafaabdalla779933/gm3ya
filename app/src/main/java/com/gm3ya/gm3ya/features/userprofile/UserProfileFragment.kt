@@ -1,11 +1,13 @@
 package com.gm3ya.gm3ya.features.userprofile
 
 
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.buildingmaterials.buildingmaterials.common.getDayMonthAndYear
 import com.bumptech.glide.Glide
+import com.gm3ya.gm3ya.R
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
@@ -40,7 +42,8 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding, AnyViewMode
 
             tvUserBirthDate.text = user?.birthDate?.getDayMonthAndYear()
             tvUserNationality.text =  user?.nationality
-            //tvAddress.text =
+            tvUserAddress.text = user?.getAddress()
+            tvUserHomeAddress.text = user?.getHomeAddress()
             tvUserPhoneNumber.text = user?.phone
 
             btnDelete.setOnClickListener {
@@ -55,6 +58,20 @@ class UserProfileFragment : BaseFragment<FragmentUserProfileBinding, AnyViewMode
                     showErrorMsg(it)
 
                 })
+            }
+
+            tvUserIdBack.setOnClickListener {
+                user?.backUrl?.let { url ->
+                    findNavController().navigate(R.id.imageFragment, bundleOf("url" to url))
+                }
+
+            }
+
+            tvUserIdFront.setOnClickListener {
+                user?.frontUrl?.let { url ->
+                    findNavController().navigate(R.id.imageFragment, bundleOf("url" to url))
+                }
+
             }
         }
     }

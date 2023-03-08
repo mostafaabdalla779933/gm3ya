@@ -27,6 +27,7 @@ class JoinAssociationService : JobIntentService() {
     var userModel:UserModel? = null
     var association:AssociationModel?= null
     var isChoosePlace = false
+    var place :Int = 1
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         progress()
@@ -42,7 +43,10 @@ class JoinAssociationService : JobIntentService() {
         userModel = intent?.extras?.getParcelable<UserModel>(FirebaseHelp.USERS)
         association = intent?.extras?.getParcelable<AssociationModel>(FirebaseHelp.ASSOCIATION)
         isChoosePlace = intent?.extras?.getBoolean(JoinAssociationFragment.isChoosePlace) ?: false
-        userModel?.profileUri?.let{ uploadImage(it) }
+        userModel?.profileUri?.let{
+            place = userModel?.place ?: 1
+            uploadImage(it)
+        }
     }
 
     private fun uploadImage(uri: Uri){
@@ -109,14 +113,14 @@ class JoinAssociationService : JobIntentService() {
         val notificationModel = NotificationModel(
             title = "${userModel.userName} want to join Association",
             type = NotificationType.RequestAssociation.value,
-            from = userModel,
+            from = userModel.also { it.place = place },
             fromId = userModel.userId,
             hash = System.currentTimeMillis(),
             date = SimpleDateFormat("dd MMM yyyy").format(System.currentTimeMillis()),
             toUserId = "ELaaIYVVubN6iN9zO9Jy74rdKCi1",
-            isChoosePlace = isChoosePlace,
+            choosePlace = isChoosePlace,
             associationModel = association,
-            place = userModel.place
+            place = place
         )
 
         FirebaseHelp.addObject<NotificationModel>(

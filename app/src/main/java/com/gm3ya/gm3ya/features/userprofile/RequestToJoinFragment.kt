@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.buildingmaterials.buildingmaterials.common.getDayMonthAndYear
+import com.buildingmaterials.buildingmaterials.common.showMessage
 import com.bumptech.glide.Glide
 import com.gm3ya.gm3ya.R
 import com.gm3ya.gm3ya.common.base.AnyViewModel
@@ -30,13 +31,9 @@ class RequestToJoinFragment  : BaseFragment<FragmentRequestToJoinBinding, AnyVie
 
         binding.apply {
             tvAssociationName.text =args.notification.associationModel?.name
-            tvUserNumber.text =
-                if (args.notification.isChoosePlace == true){
-                    args.notification.place.toString()
-                }else{
-                    ((args.notification.associationModel?.users?.size ?: 0) + 1 ).toString()
-                }
-                args.notification.from?.apply {
+            tvUserNumber.text =args.notification.place.toString()
+
+            args.notification.from?.apply {
                 Glide.with(requireContext())
                     .load(profileUrl)
                     .into(ivUserPicture)
@@ -45,7 +42,7 @@ class RequestToJoinFragment  : BaseFragment<FragmentRequestToJoinBinding, AnyVie
                 tvUserIdNumber.text = hash
                 tvUserEmail.text = email
                 tvUserBirthDate.text = birthDate?.getDayMonthAndYear()
-                tvUserNationality.text =  nationality
+                tvUserNationality.text = nationality
                 tvUserAddress.text = getAddress()
                 tvUserHomeAddress.text = getHomeAddress()
                 tvUserPhoneNumber.text = phone
@@ -80,10 +77,18 @@ class RequestToJoinFragment  : BaseFragment<FragmentRequestToJoinBinding, AnyVie
         val user = args.notification.from
         val association = args.notification.associationModel
         val notificationModel = args.notification
-        if (notificationModel.isChoosePlace == true){
+
+        val size = association?.maxSize ?: 0
+        val list:MutableList<Int> = (1..size).toMutableList()
+        association?.users?.forEach { user ->
+            user.place?.let {
+                list.remove(it)
+            }
+        }
+        if (notificationModel.choosePlace == true){
             user?.place = notificationModel.place
         }else{
-            user?.place = (association?.users?.size ?: 0) + 1
+            user?.place = list.firstOrNull() ?: 1
         }
         user?.let {
             association?.users?.add(user)

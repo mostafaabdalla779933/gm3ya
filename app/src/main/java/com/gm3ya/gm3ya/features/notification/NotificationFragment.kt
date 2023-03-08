@@ -1,6 +1,7 @@
 package com.gm3ya.gm3ya.features.notification
 
 
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.gm3ya.gm3ya.common.base.AnyViewModel
