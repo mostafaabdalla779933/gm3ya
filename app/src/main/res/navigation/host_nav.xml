@@ -88,13 +88,7 @@
         android:name="com.gm3ya.gm3ya.features.clientdashboard.ClientDashboardFragment"
         android:label="fragment_client_dashboard"
         tools:layout="@layout/fragment_client_dashboard" >
-        <action
-            android:id="@+id/action_clientDashboardFragment_to_customAlertDialog"
-            app:destination="@id/customAlertDialog"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+
         <action
             android:id="@+id/action_clientDashboardFragment_to_notificationFragment"
             app:destination="@id/notificationFragment"
@@ -188,6 +182,9 @@
         android:id="@+id/customAlertDialog"
         android:name="com.gm3ya.gm3ya.features.customalertdialog.CustomAlertDialog"
         android:label="CustomAlertDialog" >
+        <argument
+            android:name="number"
+            app:argType="integer" />
     </dialog>
     <fragment
         android:id="@+id/associationsDetailsFragment"
@@ -261,6 +258,9 @@
         <argument
             android:name="association"
             app:argType="com.gm3ya.gm3ya.common.firebase.data.AssociationModel" />
+        <action
+            android:id="@+id/action_joinAssociationFragment_to_customAlertDialog"
+            app:destination="@id/customAlertDialog" />
     </fragment>
     <fragment
         android:id="@+id/requestToJoinFragment"
@@ -311,4 +311,14 @@
         android:id="@+id/successDialog"
         android:name="com.gm3ya.gm3ya.features.payment.SuccessDialog"
         android:label="SuccessDialog" />
+
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.gm3ya.gm3ya.features.ImageFragment"
+        android:label="fragment_image"
+        tools:layout="@layout/fragment_image" >
+        <argument
+            app:argType="string"
+            android:name="url"/>
+    </fragment>
 </navigation>

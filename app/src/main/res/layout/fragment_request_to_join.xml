@@ -168,7 +168,7 @@
 
         <TextView
             android:id="@+id/tv_user_address"
-            style="@style/TextView.profile"
+            style="@style/TextView.id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -194,7 +194,7 @@
 
         <TextView
             android:id="@+id/tv_user_home_address"
-            style="@style/TextView.profile"
+            style="@style/TextView.id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -230,7 +230,7 @@
             android:paddingTop="12dp"
             android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:text="×××××××××"
+            tools:text="×××××××××"
             android:textSize="15sp" />
 
         <TextView
@@ -282,7 +282,7 @@
             android:paddingTop="12dp"
             android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:text="id front 12316.png"
+            android:text="id front.png"
             android:textSize="15sp" />
 
         <TextView
@@ -308,7 +308,7 @@
             android:paddingTop="12dp"
             android:paddingEnd="20dp"
             android:paddingBottom="11dp"
-            android:text="id back 12316.png"
+            android:text="id back.png"
             android:textSize="15sp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat

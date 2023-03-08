@@ -28,9 +28,9 @@ class NotificationFragment :  BaseFragment<FragmentNotificationBinding, AnyViewM
 
     private fun getData() {
         showLoading()
-        FirebaseHelp.getAllObjects<NotificationModel>(FirebaseHelp.NOTIFICATION, {
+        FirebaseHelp.getAllObjects<NotificationModel>(FirebaseHelp.NOTIFICATION, { list ->
             hideLoading()
-            binding.rvNotifications.adapter = NotificationAdapter(it.filter { e -> e.toUserId == FirebaseHelp.getUserID() }){
+            binding.rvNotifications.adapter = NotificationAdapter(list.filter { e -> e.toUserId == FirebaseHelp.getUserID() }.sortedBy { e -> e.hash ?: 0 }){
                 when(it.type){
                     NotificationType.RequestAssociation.value ->{
                         findNavController().navigate(NotificationFragmentDirections.actionNotificationFragmentToRequestToJoinFragment(it))

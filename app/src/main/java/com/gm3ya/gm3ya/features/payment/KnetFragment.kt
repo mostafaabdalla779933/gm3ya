@@ -1,6 +1,8 @@
 package com.gm3ya.gm3ya.features.payment
 
 
+import android.app.DatePickerDialog
+import android.widget.DatePicker
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -10,11 +12,14 @@ import com.gm3ya.gm3ya.common.base.BaseFragment
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
 import com.gm3ya.gm3ya.common.firebase.data.AssociationModel
 import com.gm3ya.gm3ya.databinding.FragmentKnetBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 
-class KnetFragment : BaseFragment<FragmentKnetBinding, AnyViewModel>() {
+class KnetFragment : BaseFragment<FragmentKnetBinding, AnyViewModel>(), DatePickerDialog.OnDateSetListener {
 
     private val args:KnetFragmentArgs  by navArgs()
+    var selected = false
     override fun initBinding()=FragmentKnetBinding.inflate(layoutInflater)
 
     override fun initViewModel() {
@@ -33,17 +38,18 @@ class KnetFragment : BaseFragment<FragmentKnetBinding, AnyViewModel>() {
     private fun validate(){
         binding.apply {
             when{
-                etSelectBank.isStringEmpty() ->{
-                    showErrorMsg("fill bank")
-                }
                 etCardNumber.isStringEmpty() ->{
                     showErrorMsg("fill card number")
+                }
+                selected.not() ->{
+                    showErrorMsg("fill Expiration date")
                 }
                 else->{
                     pay()
                 }
             }
         }
+
     }
 
     private fun pay(){
@@ -63,6 +69,16 @@ class KnetFragment : BaseFragment<FragmentKnetBinding, AnyViewModel>() {
                 hideLoading()
                 showErrorMsg(it)
             })
+    }
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        selected = true
+        val calendar  = Calendar.getInstance()
+        calendar.set(year,month,dayOfMonth)
+        val dateSelected = Date(calendar.timeInMillis)
+        val date = SimpleDateFormat("dd/MM/yyyy").format(dateSelected)
+        binding.tvChooseMonth.text = date.split("/")[1]
+        binding.etYear.text = date.split("/")[2]
     }
 
 }

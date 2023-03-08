@@ -78,6 +78,12 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
                 arr
             )
 
+            findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("key")
+                ?.observe(
+                    viewLifecycleOwner
+                ) { result ->
+                    sendRequest()
+                }
             ivUserPicture.setOnClickListener {
                 selectedFlag = PROFILE
                 chooseUserPhotoFromGallery()
@@ -168,7 +174,8 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
                     showErrorMsg("invalid confirmation password")
                 }
                 else ->{
-                    sendRequest()
+                    val number  = if(args.isChoosePlace) spinner.selectedItem.toString().toIntOrNull() else ((args.association.users?.size ?: 0) + 1)
+                    findNavController().navigate(JoinAssociationFragmentDirections.actionJoinAssociationFragmentToCustomAlertDialog(number = number ?: 1))
                 }
             }
         }
@@ -179,6 +186,8 @@ class JoinAssociationFragment : BaseFragment<FragmentJoinAssociationBinding, Any
             val intent = Intent(requireContext(), JoinAssociationService::class.java)
             user?.apply {
                 profileUri = selectedProfileUri
+                backUri = selectedBackUri
+                frontUri = selectedFrontUri
                 fullName  = etFullName.getString()
                 idNumber = etIdNumber.getString()
                 birthDate = selectedDate

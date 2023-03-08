@@ -15,7 +15,9 @@ data class UserModel(
     var place:Int? = null,
     var profileUri: Uri?=null,
     var profileUrl:String?=null,
+    var backUrl:String?=null,
     var backUri:Uri?=null,
+    var frontUrl:String?=null,
     var frontUri:Uri?= null,
     var fullName:String?="",
     var idNumber:String?="",
@@ -30,7 +32,11 @@ data class UserModel(
     var apartment:String?="",
     var phone:String?="",
     var isDeleted:Boolean? = false
-) : Parcelable
+) : Parcelable{
+
+    fun getAddress() = "$gov,$city,$block,$street"
+    fun getHomeAddress() = "$building,$role,$apartment"
+}
 
 enum class UserState(val value:String){
     Pending("Pending"),Accepted("Accepted"),Rejected("Rejected")
@@ -44,7 +50,7 @@ data class AssociationModel(
     val startDate:String? = null,
     val endDate:String? = null,
     val hashed:String?=null,
-    val state:String?= null,
+    var state:String?= null,
     val maxSize:Int?=null,
     val amountPerMonth:String?=null,
     val months:MutableList<MonthModel?>?= mutableListOf(),

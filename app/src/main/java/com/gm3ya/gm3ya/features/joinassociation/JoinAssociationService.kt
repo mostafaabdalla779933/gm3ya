@@ -48,6 +48,32 @@ class JoinAssociationService : JobIntentService() {
     private fun uploadImage(uri: Uri){
         FirebaseHelp.uploadImageToCloudStorage(this,uri,"user",{
             userModel?.profileUrl = it
+            userModel?.frontUri?.let {
+                uploadFrontImage(it)
+            }
+
+        },{
+            isFailed = true
+            showMessage(it.localizedMessage ?: "something wrong")
+        })
+    }
+
+
+    private fun uploadFrontImage(uri: Uri){
+        FirebaseHelp.uploadImageToCloudStorage(this,uri,"user",{
+            userModel?.frontUrl = it
+            userModel?.backUri?.let {
+                uploadBackImage(it)
+            }
+        },{
+            isFailed = true
+            showMessage(it.localizedMessage ?: "something wrong")
+        })
+    }
+
+    private fun uploadBackImage(uri: Uri){
+        FirebaseHelp.uploadImageToCloudStorage(this,uri,"user",{
+            userModel?.backUrl = it
             addUser()
         },{
             isFailed = true
@@ -59,6 +85,8 @@ class JoinAssociationService : JobIntentService() {
 
         userModel?.let{ userModel ->
             userModel.profileUri = null
+            userModel.backUri = null
+            userModel.frontUri = null
             FirebaseHelp
                 .fireStore.collection(FirebaseHelp.USERS)
                 .document(userModel.userId ?: "").set(userModel, SetOptions.merge())
@@ -77,15 +105,15 @@ class JoinAssociationService : JobIntentService() {
 
     }
 
-    fun addNotification(userModel: UserModel){
+    private fun addNotification(userModel: UserModel){
         val notificationModel = NotificationModel(
             title = "${userModel.userName} want to join Association",
             type = NotificationType.RequestAssociation.value,
             from = userModel,
             fromId = userModel.userId,
             hash = System.currentTimeMillis(),
-            date = SimpleDateFormat("dd MM yyyy").format(System.currentTimeMillis()),
-            toUserId = association?.creatorId,
+            date = SimpleDateFormat("dd MMM yyyy").format(System.currentTimeMillis()),
+            toUserId = "ELaaIYVVubN6iN9zO9Jy74rdKCi1",
             isChoosePlace = isChoosePlace,
             associationModel = association,
             place = userModel.place
