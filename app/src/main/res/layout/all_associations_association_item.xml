@@ -75,7 +75,7 @@
         android:paddingEnd="10dp"
         android:padding="5dp"
         android:background="@drawable/all_associations_item_tv_state_available_background"
-        android:text="Available"
+        tools:text="Available"
         android:textSize="12sp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tv_total_amount"

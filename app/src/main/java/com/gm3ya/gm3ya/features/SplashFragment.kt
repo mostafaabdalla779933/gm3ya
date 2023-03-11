@@ -36,10 +36,14 @@ class SplashFragment  : BaseFragment<FragmentSplashBinding, AnyViewModel>() {
             FirebaseHelp.getUser({
                 hideLoading()
                 FirebaseHelp.user = it
-                if (it.isAdmin == true) {
-                    findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAdminDashboardFragment())
+                if(it.isDeleted == true){
+                    FirebaseHelp.logout()
                 }else{
-                    findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToClientDashboardFragment())
+                    if (it.isAdmin == true) {
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAdminDashboardFragment())
+                    }else{
+                        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToClientDashboardFragment())
+                    }
                 }
             }, {
                 hideLoading()

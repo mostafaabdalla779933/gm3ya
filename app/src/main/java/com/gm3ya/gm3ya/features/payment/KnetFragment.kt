@@ -2,6 +2,7 @@ package com.gm3ya.gm3ya.features.payment
 
 
 import android.app.DatePickerDialog
+import android.view.Window
 import android.widget.DatePicker
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.buildingmaterials.buildingmaterials.common.isStringEmpty
 import com.gm3ya.gm3ya.common.base.AnyViewModel
 import com.gm3ya.gm3ya.common.base.BaseFragment
+import com.gm3ya.gm3ya.common.base.DateFragmentTo
 import com.gm3ya.gm3ya.common.firebase.FirebaseHelp
 import com.gm3ya.gm3ya.common.firebase.data.AssociationModel
 import com.gm3ya.gm3ya.databinding.FragmentKnetBinding
@@ -31,6 +33,17 @@ class KnetFragment : BaseFragment<FragmentKnetBinding, AnyViewModel>(), DatePick
             tvTotalAmount.text = args.association.amountPerMonth
             btnConfirm.setOnClickListener {
                 validate()
+            }
+
+            tvChooseMonth.setOnClickListener {
+                DateFragmentTo(this@KnetFragment).also {
+                    it.dialog?.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+                }.show(parentFragmentManager, "date")
+            }
+            etYear.setOnClickListener {
+                DateFragmentTo(this@KnetFragment).also {
+                    it.dialog?.window?.requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+                }.show(parentFragmentManager, "date")
             }
         }
     }

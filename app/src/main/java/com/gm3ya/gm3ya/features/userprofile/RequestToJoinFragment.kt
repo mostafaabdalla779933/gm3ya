@@ -21,6 +21,7 @@ import com.gm3ya.gm3ya.databinding.FragmentRequestToJoinBinding
 class RequestToJoinFragment  : BaseFragment<FragmentRequestToJoinBinding, AnyViewModel>(){
 
     private val args : RequestToJoinFragmentArgs by navArgs()
+    var association : AssociationModel? = null
     override fun initBinding()= FragmentRequestToJoinBinding.inflate(layoutInflater)
 
     override fun initViewModel() {
@@ -70,12 +71,29 @@ class RequestToJoinFragment  : BaseFragment<FragmentRequestToJoinBinding, AnyVie
             }
 
         }
+        getAssociation()
     }
 
 
+    private fun getAssociation() {
+        showLoading()
+        FirebaseHelp.getObject<AssociationModel>(
+            FirebaseHelp.ASSOCIATION,
+            args.notification.associationModel?.hashed ?: "",
+            {
+                hideLoading()
+                association = it
+
+            },
+            {
+                hideLoading()
+                requireContext().showMessage(it)
+                findNavController().popBackStack()
+            })
+    }
+
     private fun addUserToAssociation() {
         val user = args.notification.from
-        val association = args.notification.associationModel
         val notificationModel = args.notification
 
         val size = association?.maxSize ?: 0
@@ -85,7 +103,17 @@ class RequestToJoinFragment  : BaseFragment<FragmentRequestToJoinBinding, AnyVie
                 list.remove(it)
             }
         }
-        if (notificationModel.choosePlace == true){
+        if (
+            association?.users?.none { e -> e.userId == user?.userId } == false
+            || association?.users?.size == association?.maxSize
+            || association?.state == AssociationState.Completed.value
+        ) {
+            requireContext().showMessage("can't add this user")
+            showLoading()
+            deleteNotification()
+            return
+        }
+        if (notificationModel.choosePlace == true&& association?.users?.none { e-> e.place == notificationModel.place } == true){
             user?.place = notificationModel.place
         }else{
             user?.place = list.firstOrNull() ?: 1
